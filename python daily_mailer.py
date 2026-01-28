@@ -46,7 +46,7 @@ def send_daily_email():
 
 # 2. Schedule the email to run daily
 # This example runs the function every day at 8:00 AM
-schedule.every().day.at("08:00").do(send_daily_email)
+schedule.every().day.at("07:00").do(send_daily_email)
 
 print("Email scheduler started. Waiting for the scheduled time...")
 
