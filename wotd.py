@@ -1,5 +1,8 @@
 import re
 import requests
+import schedule
+import time
+from datetime import datetime
 
 
 WORD = 'Covetous'
@@ -121,10 +124,6 @@ def first_definition():
         f'Date first used: {list_of_word_variants[0].date}')
 
 first_definition()
-
-import schedule
-import time
-from datetime import datetime
 
 def update_variable():
     global my_variable
