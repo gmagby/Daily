@@ -1,8 +1,6 @@
 import re
 import requests
-import schedule
-import time
-from datetime import datetime
+
 
 
 WORD = 'Covetous'
@@ -125,15 +123,3 @@ def first_definition():
 
 first_definition()
 
-def update_variable():
-    global my_variable
-    my_variable = "Updated value at " + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(my_variable)
-
-my_variable = "Initial value"
-
-schedule.every().day.at("11:00").do(update_variable)
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
