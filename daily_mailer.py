@@ -55,3 +55,20 @@ if __name__ == "__main__":
     while True:
         schedule.run_pending()
         time.sleep(60) # Wait 60 seconds before checking the schedule again
+
+import schedule
+import time
+from datetime import datetime
+
+def update_variable():
+    global my_variable
+    my_variable = "Updated value at " + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(my_variable)
+
+my_variable = "Initial value"
+
+schedule.every().day.at("11:00").do(update_variable)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
