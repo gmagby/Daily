@@ -26,6 +26,7 @@ def first_definition():
         f'Date first used: {list_of_word_variants[favored].date}')
 
 
+
 def more_definitions():
     for t in range (num):
         if list_of_word_variants[t].definition == 'No info available':
@@ -38,6 +39,8 @@ def more_definitions():
                 f'**{list_of_word_variants[t].type_of_speech}**')
             st.markdown(
                 f'Date first used: {list_of_word_variants[t].date}')
+            st.markdown(list_of_word_variants[favored].synonyms)
+            st.markdown(list_of_word_variants[favored].antonyms)
             # st.markdown(
             #     f'{list_of_word_variants[t].etymology}')
             st.header("", divider="rainbow")
@@ -57,6 +60,11 @@ def instructions_app():
     )
 
 first_definition()
+
+if st.button('Thesaurus'):
+    st.markdown(list_of_word_variants[favored].synonyms)
+    st.markdown(list_of_word_variants[favored].antonyms)
+
 
 if st.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
