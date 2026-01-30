@@ -10,6 +10,8 @@ DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
 ETYMOLOGY_KEY = 'et'
+SYNONYMS = 'syns'
+ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 file_name = "Former Words of the day"
 
@@ -18,6 +20,9 @@ def get_response_dictionary(ref, word, key):
     response = requests.get(url)
     print(url)
     return response.json()
+
+data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
 
 
 # def offline_data():
@@ -65,52 +70,46 @@ def list_manager(data, syntax):
         for item in data
     ]
 
+def extract_synonyms(data, nyms):
+    """Extracts synonyms or antonyms from the provided data."""
+    nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
 
-data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+    for entry in data:
+        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
+        nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
 
+    return nyms_lists
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 etymology_list = list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
+synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
+antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
 
 
 class WordVariant:
-    def __init__(self, definition, type_of_speech, date, etymology):
+    def __init__(self, definition, type_of_speech, date, etymology, synonyms, antonyms):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
         self.etymology = etymology
+        self.synonyms = synonyms
+        self.antonyms = antonyms
 
 
-def create_word_variants(definitions, types_of_speech, dates, etymologies):
+def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms, antonyms):
     return [
-        WordVariant(definition, type_of_speech, date, etymology)
-        for definition, type_of_speech, date, etymology in zip(definitions, types_of_speech, dates, etymologies)
+        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
+        for definition, type_of_speech, date, etymology, synonyms, antonyms in zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
-
-
-
-list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list)
+list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
 # Text to List Converter
 def split_text(text):
     return text.split(',')
 
-def long_definition(iteration):
-    dt_list = []
-    for definition in data[iteration]['def']:
-        for sense in definition['sseq']:
-            for item in sense:
-                if isinstance(item, list) and len(item) > 1 and 'dt' in item[1]:
-                    dt_list.extend([dt[1] for dt in item[1]['dt'] if isinstance(dt, list)])
-    # print(dt_list)
-    return dt_list
-
-
 formated_definition = split_text(list_of_word_variants[0].definition)
-
-print(formated_definition)
 
 def first_definition():
     for t in range (len(formated_definition)):
