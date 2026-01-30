@@ -73,11 +73,11 @@ url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
 st.link_button("Merriam-Webster", url)
 
 if num > 1:
-    if list_of_word_variants[1].definition == 'No info available':
-        pass
-    else:
-        if st.button("All Definitions"):
-            more_definitions()
+    # if list_of_word_variants[1].definition == 'No info available':
+    #     pass
+    # else:
+    if st.button("All Definitions"):
+        more_definitions()
 
 
 
