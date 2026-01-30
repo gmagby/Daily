@@ -78,8 +78,6 @@ if num > 1:
     else:
         if st.button("All Definitions"):
             more_definitions()
-else:
-    pass
 
 
 
