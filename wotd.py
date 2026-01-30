@@ -79,9 +79,9 @@ def extract_synonyms(data, nyms):
     for entry in data:
         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
-        clean_text = cleaner(nyms_lists)
 
-    return clean_text
+
+    return nyms_lists
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
