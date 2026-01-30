@@ -39,8 +39,8 @@ def more_definitions():
                 f'**{list_of_word_variants[t].type_of_speech}**')
             st.markdown(
                 f'Date first used: {list_of_word_variants[t].date}')
-            st.markdown(list_of_word_variants[favored].synonyms)
-            st.markdown(list_of_word_variants[favored].antonyms)
+            st.markdown(list_of_word_variants[t].synonyms)
+            st.markdown(list_of_word_variants[t].antonyms)
             # st.markdown(
             #     f'{list_of_word_variants[t].etymology}')
             st.header("", divider="rainbow")
