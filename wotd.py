@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Pedant'
+WORD = 'Dogma'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -122,4 +122,3 @@ def first_definition():
         f'Date first used: {list_of_word_variants[0].date}')
 
 first_definition()
-print(list_of_word_variants[0].antonyms)

@@ -4,6 +4,8 @@ import schedule
 from email.message import EmailMessage
 import os
 
+import wotd
+
 # 1. Email configuration (use environment variables for security)
 # Set these environment variables in your system: EMAIL_ADDRESS, EMAIL_PASSWORD
 SENDER_EMAIL = os.environ.get('EMAIL_ADDRESS')
@@ -24,7 +26,7 @@ def send_daily_email():
         return
 
     recipients = get_subscribers()
-    subject = "Today's Word of the day is ready!"
+    subject = "Today's Word of the Day is ready!"
     body = "This is your automated daily email update. Have a great day!"
 
     for recipient in recipients:
@@ -67,7 +69,7 @@ def update_variable():
     my_variable = "Updated value at " + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(my_variable)
 
-my_variable = "Initial value"
+my_variable = wotd.WORD
 
 schedule.every().day.at("11:00").do(update_variable)
 

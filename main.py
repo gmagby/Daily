@@ -14,14 +14,20 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 # Text to List Converter
 def split_text(text):
-    return text.split('","')
+    return text.split(',')
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
 
 
 def first_definition():
-    for t in range (len(formated_definition)):
-        st.markdown(formated_definition[t])
+    st.markdown(
+        f'Date first used: {list_of_word_variants[favored].date}')
+    st.markdown(
+        f'Date first used: {list_of_word_variants[favored].date}')
+    st.markdown(
+        f'Date first used: {list_of_word_variants[favored].date}')
+    # for t in range (len(formated_definition)):
+    #     st.markdown(formated_definition[t])
     st.markdown(
         f'Date first used: {list_of_word_variants[favored].date}')
 
