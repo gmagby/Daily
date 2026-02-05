@@ -5,10 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
+      <change afterPath="$PROJECT_DIR$/Photos/Adage.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Agentic.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Anapest.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Anathema.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Aver.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Car Coat.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Countermand.avif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Covetous.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Debouch.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Debouch1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Decadent.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Disport.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Dogma.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Dolor.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Endeavor.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Future WOTD.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Goyim.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_2121.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_2122.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_2124.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_2127.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_2128.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_4619.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_4620.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_4621.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/IMG_4622.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Itinerant.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Jingoism.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Jingoism2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Jingoism3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Mandate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Monochromatic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Palaver.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Pedant.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Pejorative.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Poltroon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Probative.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Savant.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Schema.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Stoic.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Vicissitude.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Yttrium1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/Yttrium2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Photos/ef05c975-dc27-4f35-b5b3-0b7d3ed0d007_1920x1080.webp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daily_mailer.py" beforeDir="false" afterPath="$PROJECT_DIR$/daily_mailer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wotd.py" beforeDir="false" afterPath="$PROJECT_DIR$/wotd.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,21 +86,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.daily_mailer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.python daily_mailer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
-    &quot;Python.wotd.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.daily_mailer.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.python daily_mailer.executor": "Run",
+    "Python.scratch.executor": "Run",
+    "Python.wotd.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/gabem/PythonProject/PythonProject/Photos",
+    "settings.editor.selected.configurable": "configurable.group.tools"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -307,7 +349,23 @@
       <option name="project" value="LOCAL" />
       <updated>1769750055448</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1769922145164</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1769922145164</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1769922212812</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1769922212812</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
