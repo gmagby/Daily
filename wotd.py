@@ -1,11 +1,11 @@
 import re
 import requests
 
-WORD = 'Dogma'
+WORD = 'Palaver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+THESAURUS_KEY = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
 DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
@@ -15,14 +15,20 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 file_name = "Former Words of the day"
 
-def get_response_dictionary(ref, word, key):
+def make_url(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
-    response = requests.get(url)
     print(url)
+    return url
+
+coll_url = make_url(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+thes_url = make_url(REF_THESAURUS, WORD, THESAURUS_KEY)
+
+def get_response_dictionary(url):
+    response = requests.get(url)
     return response.json()
 
-data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
-thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
+data = get_response_dictionary(coll_url)
+thes_data = get_response_dictionary(thes_url)
 
 
 # def offline_data():

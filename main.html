@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word of the Day</title>
+</head>
+<body>
+    <h1 style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);">Word of the Day</h1>
+    <h2><!-- wotd.WORD --></h2>
+    <strong><!-- list_of_word_variants[favored].type_of_speech --></strong>
+
+    <script>
+        // Text to List Converter
+        function splitText(text) {
+            return text.split(',');
+        }
+
+        var formatedDefinition = splitText("<!-- list_of_word_variants[favored].definition -->");
+
+        function firstDefinition() {
+            formatedDefinition.forEach(function(def) {
+                document.write("<p>" + def + "</p>");
+            });
+            document.write("<p>Date first used: <!-- list_of_word_variants[favored].date --></p>");
+        }
+
+        function moreDefinitions() {
+            for (var t = 0; t < num; t++) {
+                if ("<!-- list_of_word_variants[t].definition -->" === 'No info available') {
+                    continue;
+                } else {
+                    document.write("<p><!-- list_of_word_variants[t].definition --></p>");
+                    document.write("<strong><!-- list_of_word_variants[t].type_of_speech --></strong>");
+                    document.write("<p>Date first used: <!-- list_of_word_variants[t].date --></p>");
+                    document.write("<p><!-- list_of_word_variants[t].synonyms --></p>");
+                    document.write("<p><!-- list_of_word_variants[t].antonyms --></p>");
+                    document.write("<h1 style='background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);'></h1>");
+                }
+            }
+        }
+
+        function instructionsApp() {
+            document.write("<p>Instructions on how to make WOTD into a widget on your homescreen.</p>");
+            document.write("<p>Safari Instructions: <a href='https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing'>Link</a></p>");
+            document.write("<p>Chrome instructions: <a href='https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing'>Link</a></p>");
+        }
+
+        firstDefinition();
+
+        // Simulating button clicks
+        if (true) { // Replace with actual button logic
+            document.write("<p><!-- list_of_word_variants[favored].synonyms --></p>");
+            document.write("<p><!-- list_of_word_variants[favored].antonyms --></p>");
+        }
+
+        if (true) { // Replace with actual button logic
+            instructionsApp();
+        }
+
+        var url = 'https://www.merriam-webster.com/dictionary/<!-- wotd.WORD -->';
+        document.write("<a href='" + url + "'>Merriam-Webster</a>");
+
+        if (num > 1) {
+            if ("<!-- list_of_word_variants[1].definition -->" !== 'No info available') {
+                if (true) { // Replace with actual button logic
+                    moreDefinitions();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

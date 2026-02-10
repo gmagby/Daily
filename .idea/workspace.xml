@@ -5,51 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
-      <change afterPath="$PROJECT_DIR$/Photos/Adage.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Agentic.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Anapest.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Anathema.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Aver.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Car Coat.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Countermand.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Covetous.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Debouch.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Debouch1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Decadent.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Disport.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Dogma.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Dolor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Endeavor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Future WOTD.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Goyim.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_2121.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_2122.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_2124.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_2127.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_2128.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_4619.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_4620.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_4621.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/IMG_4622.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Itinerant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Jingoism.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Jingoism2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Jingoism3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Mandate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Monochromatic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Palaver.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Pedant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Pejorative.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Poltroon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Probative.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Savant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Schema.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Stoic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Vicissitude.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Yttrium1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Yttrium2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/ef05c975-dc27-4f35-b5b3-0b7d3ed0d007_1920x1080.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wotd.py" beforeDir="false" afterPath="$PROJECT_DIR$/wotd.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -88,6 +47,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.daily_mailer.executor": "Run",
     "Python.main.executor": "Run",
@@ -102,6 +62,11 @@
     "settings.editor.selected.configurable": "configurable.group.tools"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gabem\PythonProject\PythonProject\Photos" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -365,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769922212812</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1770264601025</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1770264601025</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
