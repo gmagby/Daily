@@ -1,11 +1,11 @@
 import re
 import requests
 
-WORD = 'Palaver'
+WORD = 'Intrigue'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-THESAURUS_KEY = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
 DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
@@ -15,21 +15,11 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 file_name = "Former Words of the day"
 
-def make_url(ref, word, key):
+def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
-    print(url)
-    return url
-
-coll_url = make_url(REF_DICTIONARY, WORD, DICTIONARY_KEY)
-thes_url = make_url(REF_THESAURUS, WORD, THESAURUS_KEY)
-
-def get_response_dictionary(url):
     response = requests.get(url)
+    print(url)
     return response.json()
-
-data = get_response_dictionary(coll_url)
-thes_data = get_response_dictionary(thes_url)
-
 
 # def offline_data():
 #     try:
@@ -44,30 +34,32 @@ thes_data = get_response_dictionary(thes_url)
 #     except ValueError:
 #         messagebox.showerror("Error", "Something went wrong.")
 
-def clean_text(text):
-    cleaned_text = []
-    for item in text:
-        if isinstance(item, str):
-            cleaned_text.append(item.replace('{bc}', '').replace('{sx|', '').replace('||', '').replace('}', '').replace('{dx_def}', '').replace('{dxt|', '').replace('{/dx_def}', '').replace('{wi}', '').replace('{/wi}', '').replace('{d_link|', '').replace('|', '').replace('}', ''))
-        elif isinstance(item, list):
-            for sub_item in item:
-                cleaned_text.append(sub_item['t'].replace('{wi}', '').replace('{/wi}', ''))
-    return '\n'.join(cleaned_text)
 
 def cleaner(clean_text, sharp=None):
+    print(clean_text)
     clean_text = str(clean_text)
     if sharp:
-        clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
+        clean_text = re.sub(r"bc}", '', clean_text)
+        clean_text = re.sub(r"dx}", '', clean_text)
+        clean_text = re.sub(r'it}', '', clean_text)
+        clean_text = re.sub(r"'text', ", '', clean_text)
+        # clean_text = re.sub(r"'", '', clean_text)
+        # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
-        clean_text = re.sub(r"bc", '', clean_text)
-    clean_text = re.sub(r"[()\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"dst1", '', clean_text)
+    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
+    # clean_text = re.sub(r"ds1", '', clean_text)
+    # clean_text = re.sub(r",", ' or', clean_text)
+    clean_text = re.sub(r'dst2', '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"ds1a", '', clean_text)
-    clean_text = re.sub(r"ds2", '', clean_text)
-    clean_text = re.sub(r"issue'", '', clean_text)
-    # clean_text = re.sub(r"", '', clean_text)
+    clean_text = re.sub(r"dst", '', clean_text)
+    clean_text = re.sub(r"ds1b", '', clean_text)
+    clean_text = re.sub(r'dst2', '', clean_text)
+    clean_text = re.sub(r"dx_ety", '', clean_text)
+    clean_text = re.sub(r"dxt", '', clean_text)
     print(clean_text)
+    print(" ")
     return clean_text
 
 
@@ -77,28 +69,50 @@ def list_manager(data, syntax):
         for item in data
     ]
 
+def et_list_manager(data, syntax):
+    return [
+        cleaner(item.get(syntax, NONE_RESULT),1) if item.get(syntax) else NONE_RESULT
+        for item in data
+    ]
 
 def extract_synonyms(data, nyms):
-    """Extracts synonyms or antonyms from the provided data."""
     nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
 
     for entry in data:
         entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
-
-
+        print(nyms_lists)
+        print(" ")
     return nyms_lists
+
+# Text to List Converter
+def split_text(text):
+    return text.split('", "')
+
+data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
 
 definition_list = list_manager(data, DEFINITION_KEY)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-etymology_list = list_manager(data, ETYMOLOGY_KEY)
+etymology_list = et_list_manager(data, ETYMOLOGY_KEY)
 date_list = list_manager(data, DATE_KEY)
-synonyms_list = (extract_synonyms(thes_data, SYNONYMS))
-antonyms_list = (extract_synonyms(thes_data, ANTONYMS))
 
+try:
+    if thes_data:
+        synonyms_list = extract_synonyms(thes_data, SYNONYMS)
+        antonyms_list = extract_synonyms(thes_data, ANTONYMS)
+    else:
+        synonyms_list = NONE_RESULT
+        antonyms_list = NONE_RESULT
+
+except Exception as e:
+    synonyms_list = NONE_RESULT
+    antonyms_list = NONE_RESULT
+    print(f"An error occurred: {e}")
+    print(" ")
 
 class WordVariant:
-    def __init__(self, definition, type_of_speech, date, etymology, synonyms, antonyms):
+    def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
@@ -112,19 +126,18 @@ def create_word_variants(definitions, types_of_speech, dates, etymologies, synon
         WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
         for definition, type_of_speech, date, etymology, synonyms, antonyms in zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
-list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
-# Text to List Converter
-def split_text(text):
-    return text.split(',')
+list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
 formated_definition = split_text(list_of_word_variants[0].definition)
 
 def first_definition():
+    print("Formated Definition:")
     for t in range (len(formated_definition)):
         print(formated_definition[t])
-
-    print(
-        f'Date first used: {list_of_word_variants[0].date}')
+    print(f'Date first used: {list_of_word_variants[0].date}')
+    print(" ")
 
 first_definition()
+print(f'Synonyms List: {synonyms_list}')
+print(f'Antonyms List: {antonyms_list}')

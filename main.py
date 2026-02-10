@@ -1,5 +1,5 @@
 import streamlit as st
-import wotd
+from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
 
@@ -7,7 +7,7 @@ favored = 0
 num = len(list_of_word_variants)
 
 st.header("Word of the Day", divider="rainbow")
-st.title(wotd.WORD)
+st.title(WORD)
 
 st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
@@ -16,34 +16,39 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 def split_text(text):
     return text.split(',')
 
+
 formated_definition = split_text(list_of_word_variants[favored].definition)
+formated_etymology = split_text(list_of_word_variants[favored].etymology)
 
 
 def first_definition():
     for t in range (len(formated_definition)):
-        st.write(formated_definition[t])
+        st.markdown(
+            f'{formated_definition[t]}')
+
     st.markdown(
-        f'Date first used: {list_of_word_variants[favored].date}')
+        f'**Date first used: {list_of_word_variants[favored].date}**')
+
 
 
 
 def more_definitions():
-    for t in range (num):
+    for t in range (num-1):
         if list_of_word_variants[t].definition == 'No info available':
             pass
 
         else:
             st.markdown(
-                f'{list_of_word_variants[t].definition}')
+                f'{list_of_word_variants[t+1].definition}')
             st.markdown(
-                f'**{list_of_word_variants[t].type_of_speech}**')
+                f'**{list_of_word_variants[t+1].type_of_speech}**')
             st.markdown(
-                f'Date first used: {list_of_word_variants[t].date}')
-            st.markdown(list_of_word_variants[t].synonyms)
-            st.markdown(list_of_word_variants[t].antonyms)
-            # st.markdown(
-            #     f'{list_of_word_variants[t].etymology}')
-            st.header("", divider="rainbow")
+                f'Date first used: {list_of_word_variants[t+1].date}')
+            st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
+            st.markdown(f'Antonyms: {list_of_word_variants[t+1].antonyms}')
+            # if list_of_word_variants[favored].etymology != 'No info available':
+            #     for t in range(len(formated_etymology)):
+            #         st.markdown(formated_etymology[t+1])
 
 
 
@@ -59,18 +64,17 @@ def instructions_app():
         '''
     )
 
+
 first_definition()
+
+if list_of_word_variants[favored].etymology != 'No info available':
+    if st.button("Etymology"):
+        for t in range(len(formated_etymology)):
+            st.markdown(formated_etymology[t])
 
 if st.button('Thesaurus'):
     st.markdown(list_of_word_variants[favored].synonyms)
     st.markdown(list_of_word_variants[favored].antonyms)
-
-
-if st.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
-
-url = f'https://www.merriam-webster.com/dictionary/{wotd.WORD}'
-st.link_button("Merriam-Webster", url)
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
@@ -80,6 +84,14 @@ if num > 1:
             more_definitions()
 
 
+url = f'https://www.merriam-webster.com/dictionary/{WORD}'
+st.link_button("Merriam-Webster", url)
 
-example_img = Image.open(f'{wotd.WORD}.jpg')
+if st.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
+
+example_img = Image.open(f'{WORD}.gif')
 st.image(example_img)
+
+# example_img = Image.open(f'{WORD}.jpg')
+# st.image(example_img)
