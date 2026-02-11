@@ -64,9 +64,6 @@ def instructions_app():
 
 first_definition()
 
-if st.sidebar.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
-
 st.sidebar.title(WORD)
 st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
