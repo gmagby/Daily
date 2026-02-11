@@ -10,11 +10,6 @@ st.header("Word of the Day", divider="rainbow")
 st.title(WORD)
 st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-
-st.sidebar.title(WORD)
-st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-
-
 # Text to List Converter
 def split_text(text):
     return text.split(',')
@@ -86,7 +81,11 @@ if num > 1:
     else:
         if st.button("All Definitions"):
             more_definitions()
+if st.sidebar.button("Instructions to add WOTD to your homescreen"):
+    instructions_app()
 
+st.sidebar.title(WORD)
+st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
