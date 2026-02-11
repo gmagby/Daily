@@ -74,7 +74,7 @@ b = st.sidebar.selectbox('Select', [1,2,3])
 first_definition()
 
 if list_of_word_variants[favored].etymology != 'No info available':
-    if st.button("Etymology"):
+    if st.sidebar.button("Etymology"):
         for t in range(len(formated_etymology)):
             st.markdown(formated_etymology[t])
 
@@ -91,9 +91,9 @@ if num > 1:
 
 
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-st.link_button("Merriam-Webster", url)
+st.sidebar.link_button("Merriam-Webster", url)
 
-if st.button("Instructions to add WOTD to your homescreen"):
+if st.sidebar.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
 example_img = Image.open(f'{WORD}.gif')
