@@ -53,12 +53,12 @@ def more_definitions():
 
 
 def instructions_app():
-    st.markdown(
+    st.sidebar.markdown(
         '''Instructions on how to make WOTD into a widget on your homescreen.''')
-    st.markdown('''
+    st.sidebar.markdown('''
         Safari Instructions:
         (https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)''')
-    st.markdown('''
+    st.sidebar.markdown('''
         Chrome instructions:
         (https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)
         '''
@@ -76,11 +76,11 @@ first_definition()
 if list_of_word_variants[favored].etymology != 'No info available':
     if st.sidebar.button("Etymology"):
         for t in range(len(formated_etymology)):
-            st.markdown(formated_etymology[t])
+            st.sidebar.markdown(formated_etymology[t])
 
-if st.button('Thesaurus'):
-    st.markdown(list_of_word_variants[favored].synonyms)
-    st.markdown(list_of_word_variants[favored].antonyms)
+if st.sidebar.button('Thesaurus'):
+    st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+    st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
