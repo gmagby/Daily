@@ -75,7 +75,9 @@ if list_of_word_variants[favored].etymology != 'No info available':
             st.sidebar.markdown(formated_etymology[t])
 
 if st.sidebar.button('Thesaurus'):
+    st.sidebar.markdown("Synonyms:")
     st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+    st.sidebar.markdown("Antonyms:")
     st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
 if num > 1:
