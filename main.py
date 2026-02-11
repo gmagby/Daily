@@ -64,8 +64,11 @@ def instructions_app():
         '''
     )
 
+
+
 # Just add it after st.sidebar:
-a = st.sidebar.radio('Choose:', [1, 2])
+a = st.sidebar.button('Choose:', [1, 2])
+b = st.sidebar.selectbox('Select', [1,2,3])
 
 first_definition()
 
