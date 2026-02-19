@@ -87,7 +87,7 @@ else:
         st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
 if num > 1:
-    if list_of_word_variants[1].definition == 'No info available':
+    if check_for_no_data(list_of_word_variants[1].definition):
         pass
     else:
         if st.button("All Definitions"):
