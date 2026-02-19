@@ -12,7 +12,7 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 # Text to List Converter
 def split_text(text):
-    return text.split(',')
+    return text.split(", ")
 
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
@@ -28,26 +28,22 @@ def first_definition():
         f'**Date first used: {list_of_word_variants[favored].date}**')
 
 
-
-
 def more_definitions():
     for t in range (num-1):
         if list_of_word_variants[t].definition == 'No info available':
             pass
 
         else:
+            st.header(WORD, divider="rainbow")
             st.markdown(
                 f'{list_of_word_variants[t+1].definition}')
             st.markdown(
                 f'**{list_of_word_variants[t+1].type_of_speech}**')
+            st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
             st.markdown(
                 f'Date first used: {list_of_word_variants[t+1].date}')
             st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-            st.markdown(f'Antonyms: {list_of_word_variants[t+1].antonyms}')
-            # if list_of_word_variants[favored].etymology != 'No info available':
-            #     for t in range(len(formated_etymology)):
-            #         st.markdown(formated_etymology[t+1])
-
+            st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
 
 def instructions_app():
@@ -61,22 +57,34 @@ def instructions_app():
         (https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)
         '''
     )
+def check_for_no_data(text):
+    if text == 'No info available':
+        return True
+
+    else:
+        return False
+
 
 first_definition()
 
 st.sidebar.title(WORD)
 st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-if list_of_word_variants[favored].etymology != 'No info available':
-    if st.sidebar.button("Etymology"):
-        for t in range(len(formated_etymology)):
-            st.sidebar.markdown(formated_etymology[t])
+if check_for_no_data(list_of_word_variants[favored].etymology):
+    pass
+else:
+    st.sidebar.button("Etymology")
+    for t in range(1):
+        st.sidebar.markdown(formated_etymology)
 
-if st.sidebar.button('Thesaurus'):
-    st.sidebar.markdown("Synonyms:")
-    st.sidebar.markdown(list_of_word_variants[favored].synonyms)
-    st.sidebar.markdown("Antonyms:")
-    st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+if list_of_word_variants[favored].synonyms == 'No info available':
+    pass
+else:
+    if st.sidebar.button('Thesaurus'):
+        st.sidebar.markdown("Synonyms:")
+        st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+        st.sidebar.markdown("Antonyms:")
+        st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
 if num > 1:
     if list_of_word_variants[1].definition == 'No info available':
@@ -85,14 +93,16 @@ if num > 1:
         if st.button("All Definitions"):
             more_definitions()
 
+st.button("Additional information can be found in the menu in the top left corner.")
+
 url = f'https://www.merriam-webster.com/dictionary/{WORD}'
 st.sidebar.link_button("Merriam-Webster", url)
 
 if st.sidebar.button("Instructions to add WOTD to your homescreen"):
     instructions_app()
 
-example_img = Image.open(f'{WORD}.gif')
-st.image(example_img)
-
-# example_img = Image.open(f'{WORD}.jpg')
+# example_img = Image.open(f'{WORD}.gif')
 # st.image(example_img)
+
+example_img = Image.open(f'{WORD}.jpg')
+st.image(example_img)

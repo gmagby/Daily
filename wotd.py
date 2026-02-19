@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Intrigue'
+WORD = 'Starburst'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -34,12 +34,36 @@ def get_response_dictionary(ref, word, key):
 #     except ValueError:
 #         messagebox.showerror("Error", "Something went wrong.")
 
+def extract_line(data):
+    for entry in data:
+        if 'vis' in entry['def'][0][0][1]:
+            for vis in entry['def'][0][0][1]['vis']:
+                if 't' in vis and 'paean' in vis['t']:
+                    return vis['t']
+    return None
+
+def grab_dt(data):
+    results = []
+    for entry in data:
+        for sense in entry['def']:
+            for sseq in sense['sseq']:
+                for item in sseq:
+                    if 'dt' in item[0]:
+                        for dt in item[1]['dt']:
+                            results.append(dt[1][0]['vis'][0]['t'])
+    return results
+
+# Text to List Converter
+def split_text(text):
+    return text.split("', '")
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
+    split_text(clean_text)
     if sharp:
         clean_text = re.sub(r"bc}", '', clean_text)
+        clean_text = re.sub(r"ma}", '', clean_text)
         clean_text = re.sub(r"dx}", '', clean_text)
         clean_text = re.sub(r'it}', '', clean_text)
         clean_text = re.sub(r"'text', ", '', clean_text)
@@ -58,6 +82,8 @@ def cleaner(clean_text, sharp=None):
     clean_text = re.sub(r'dst2', '', clean_text)
     clean_text = re.sub(r"dx_ety", '', clean_text)
     clean_text = re.sub(r"dxt", '', clean_text)
+    clean_text = re.sub(r"dsi1", '', clean_text)
+    clean_text = re.sub(r'ds1', '', clean_text)
     print(clean_text)
     print(" ")
     return clean_text
@@ -141,3 +167,4 @@ def first_definition():
 first_definition()
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
+print(len(list_of_word_variants))
