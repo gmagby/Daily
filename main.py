@@ -108,7 +108,7 @@ def guide_func():
         else:
             raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
-    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpeg")
     st.image(today_photo)
 
 
