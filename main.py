@@ -105,13 +105,14 @@ import os
 
 def pull_specific_photo(folder_path, photo_name):
     photo_path = os.path.join(folder_path, photo_name)
+    print(photo_path)
     if os.path.exists(photo_path):
         return Image.open(photo_path)
     else:
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
-today_photo = pull_specific_photo("https://github.com/gmagby/Daily/blob/0eddeb1a34dbfadf763a5298907b279f8baafc34/Photos", f"{WORD}.jpg")
-
+today_photo = pull_specific_photo(r"C:\Users\gabem\PythonProject\PythonProject\Photos", f"{WORD}.jpg")
+print(today_photo)
 # example_img = Image.open(today_photo)
 st.image(today_photo)
 
