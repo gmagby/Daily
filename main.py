@@ -78,7 +78,7 @@ def guide_func():
     else:
         pass
 
-    if list_of_word_variants[favored].synonyms == 'No info available':
+    if check_for_no_data(list_of_word_variants[favored].synonyms):
         if st.sidebar.button('Thesaurus'):
             st.sidebar.markdown("Synonyms:")
             st.sidebar.markdown(list_of_word_variants[favored].synonyms)
