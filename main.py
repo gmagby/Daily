@@ -59,10 +59,10 @@ def instructions_app():
     )
 def check_for_no_data(text):
     if text == 'No info available':
-        return True
+        return False
 
     else:
-        return False
+        return True
 
 def guide_func():
     first_definition()
@@ -78,13 +78,13 @@ def guide_func():
                 st.sidebar.markdown(formated_etymology)
 
     if list_of_word_variants[favored].synonyms == 'No info available':
-        pass
-    else:
         if st.sidebar.button('Thesaurus'):
             st.sidebar.markdown("Synonyms:")
             st.sidebar.markdown(list_of_word_variants[favored].synonyms)
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+
+
 
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
@@ -102,6 +102,7 @@ def guide_func():
     import os
 
     def pull_specific_photo(folder_path, photo_name):
+            # Default case (equivalent to else)
         photo_path = os.path.join(folder_path, photo_name)
         if os.path.exists(photo_path):
             return Image.open(photo_path)
