@@ -84,6 +84,8 @@ def guide_func():
             st.sidebar.markdown(list_of_word_variants[favored].synonyms)
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+        else:
+            pass
 
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
