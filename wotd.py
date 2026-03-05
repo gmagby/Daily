@@ -58,7 +58,6 @@ def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
     if sharp == 3:
-
         clean_text = re.sub(r"{mat", '', clean_text)
         clean_text = re.sub(r"bc}", '', clean_text)
         clean_text = re.sub(r"ma}", '', clean_text)
@@ -72,6 +71,9 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"-ia", '', clean_text)
         clean_text = re.sub(r"et_snote',", '', clean_text)
         clean_text = re.sub(r"'t',", '', clean_text)
+        clean_text = re.sub(r"dx_ety", '', clean_text)
+        clean_text = re.sub(r"dxt", '', clean_text)
+
 
         # clean_text = re.sub(r"'", '', clean_text)
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
@@ -101,6 +103,8 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.gif', '', clean_text)
     if sharp == 1:
         clean_text = re.sub(r"', '", '^', clean_text)
+    clean_text = re.sub(r"', '", '^', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
