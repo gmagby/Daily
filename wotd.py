@@ -104,7 +104,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.gif', '', clean_text)
     if sharp == 1:
         clean_text = re.sub(r"', '", '^', clean_text)
-    clean_text = re.sub(r"', '", '^', clean_text)
+
     clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r'phantomphantom', '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
