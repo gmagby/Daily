@@ -36,7 +36,7 @@ def more_definitions():
 
         st.header(WORD, divider="rainbow")
         st.markdown(
-            f'{list_of_word_variants[t+1].definition}')
+            f'{formated_definition[t+1]}')
         st.markdown(
             f'**{list_of_word_variants[t+1].type_of_speech}**')
         st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
