@@ -101,18 +101,20 @@ def guide_func():
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         instructions_app()
 
+    import os
+
+    def pull_specific_photo(folder_path, photo_name):
+        photo_path = os.path.join(folder_path, photo_name)
+        if os.path.exists(photo_path):
+            return Image.open(photo_path)
+        else:
+            raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
+    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+    st.image(today_photo)
+
+
 guide_func()
 
-import os
-
-def pull_specific_photo(folder_path, photo_name):
-    photo_path = os.path.join(folder_path, photo_name)
-    if os.path.exists(photo_path):
-        return Image.open(photo_path)
-    else:
-        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
-
-today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
-st.image(today_photo)
 
 
