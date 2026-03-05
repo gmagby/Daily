@@ -71,11 +71,12 @@ def guide_func():
     st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
     if check_for_no_data(list_of_word_variants[favored].etymology):
-        pass
-    else:
         if st.sidebar.button("Etymology"):
             for t in range(num):
                 st.sidebar.markdown(formated_etymology)
+
+    else:
+        pass
 
     if list_of_word_variants[favored].synonyms == 'No info available':
         if st.sidebar.button('Thesaurus'):
@@ -83,8 +84,6 @@ def guide_func():
             st.sidebar.markdown(list_of_word_variants[favored].synonyms)
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
-
-
 
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
