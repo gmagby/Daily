@@ -89,10 +89,10 @@ def guide_func():
 
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
-            pass
-        else:
             if st.button("All Definitions"):
                 more_definitions()
+        else:
+            pass
 
     url = f'https://www.merriam-webster.com/dictionary/{WORD}'
     st.sidebar.link_button("Merriam-Webster", url)
