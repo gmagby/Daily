@@ -111,9 +111,8 @@ def pull_specific_photo(folder_path, photo_name):
     else:
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
-today_photo = pull_specific_photo(r"C:\Users\gabem\PythonProject\PythonProject\Photos", f"{WORD}.jpg")
+today_photo = pull_specific_photo(r"Photos/Dolor.jpg", f"{WORD}.jpg")
 print(today_photo)
-# example_img = Image.open(today_photo)
 st.image(today_photo)
 
 
