@@ -64,61 +64,55 @@ def check_for_no_data(text):
     else:
         return False
 
+def guide_func():
+    first_definition()
 
-first_definition()
+    st.sidebar.title(WORD)
+    st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
-st.sidebar.title(WORD)
-st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-
-if check_for_no_data(list_of_word_variants[favored].etymology):
-    pass
-else:
-    if st.sidebar.button("Etymology"):
-        for t in range(num):
-            st.sidebar.markdown(formated_etymology)
-
-if list_of_word_variants[favored].synonyms == 'No info available':
-    pass
-else:
-    if st.sidebar.button('Thesaurus'):
-        st.sidebar.markdown("Synonyms:")
-        st.sidebar.markdown(list_of_word_variants[favored].synonyms)
-        st.sidebar.markdown("Antonyms:")
-        st.sidebar.markdown(list_of_word_variants[favored].antonyms)
-
-if num > 1:
-    if check_for_no_data(list_of_word_variants[1].definition):
+    if check_for_no_data(list_of_word_variants[favored].etymology):
         pass
     else:
-        if st.button("All Definitions"):
-            more_definitions()
+        if st.sidebar.button("Etymology"):
+            for t in range(num):
+                st.sidebar.markdown(formated_etymology)
 
-st.button("Additional information can be found in the menu in the top left corner.")
+    if list_of_word_variants[favored].synonyms == 'No info available':
+        pass
+    else:
+        if st.sidebar.button('Thesaurus'):
+            st.sidebar.markdown("Synonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+            st.sidebar.markdown("Antonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].antonyms)
 
-url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-st.sidebar.link_button("Merriam-Webster", url)
+    if num > 1:
+        if check_for_no_data(list_of_word_variants[1].definition):
+            pass
+        else:
+            if st.button("All Definitions"):
+                more_definitions()
 
-if st.sidebar.button("Instructions to add WOTD to your homescreen"):
-    instructions_app()
+    st.button("Additional information can be found in the menu in the top left corner.")
+
+    url = f'https://www.merriam-webster.com/dictionary/{WORD}'
+    st.sidebar.link_button("Merriam-Webster", url)
+
+    if st.sidebar.button("Instructions to add WOTD to your homescreen"):
+        instructions_app()
+
+guide_func()
 
 import os
 
 def pull_specific_photo(folder_path, photo_name):
     photo_path = os.path.join(folder_path, photo_name)
-    print(photo_path)
     if os.path.exists(photo_path):
         return Image.open(photo_path)
     else:
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
 today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
-print(today_photo)
 st.image(today_photo)
 
 
-
-# example_img = Image.open(f'{WORD}.gif')
-# st.image(example_img)
-
-# example_img = Image.open(f'{WORD}.jpg')
-# st.image(example_img)
