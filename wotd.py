@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Decadent'
+WORD = 'Phantom'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -75,6 +75,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"dxt", '', clean_text)
 
 
+
         # clean_text = re.sub(r"'", '', clean_text)
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
@@ -105,6 +106,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"', '", '^', clean_text)
     clean_text = re.sub(r"', '", '^', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
+    clean_text = re.sub(r'phantomphantom', '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
