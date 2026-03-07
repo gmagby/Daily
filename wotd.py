@@ -219,5 +219,5 @@ def list_cleaner(clean_text):
     return clean_list
 
 # Example usage
-photo_folder = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
+photo_folder = r"Photos"
 previous_WOTD = list_cleaner(list_photo_names(photo_folder))
