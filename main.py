@@ -74,7 +74,9 @@ def guide_func():
         for word in previous_WOTD:
             st.sidebar.markdown(word)
 
+
 def pull_specific_photo(folder_path, photo_name):
+    # Default case (equivalent to else)
     photo_path = os.path.join(folder_path, photo_name)
     if os.path.exists(photo_path):
         return Image.open(photo_path)
