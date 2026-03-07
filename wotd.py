@@ -202,6 +202,9 @@ print(len(list_of_word_variants))
 
 import os
 
+today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+
+
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
 
@@ -213,8 +216,7 @@ def list_cleaner(clean_text):
     clean_text = re.sub(r'.png', '', clean_text)
     clean_text = re.sub(r'.gif', '', clean_text)
     print(clean_text)
-    for t in clean_text:
-        clean_list = clean_text.split(t)
+    clean_list = clean_text.split(", ")
     print(clean_list)
     return clean_list
 
