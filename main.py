@@ -32,7 +32,7 @@ def display_more_definitions():
             st.markdown(f'Etymology: {list_of_word_variants[t].etymology}')
             st.markdown(f'Date first used: {list_of_word_variants[t].date}')
             st.markdown(f'Synonyms: {list_of_word_variants[t].synonyms}')
-            st.markdown(f'Antonyms: None found')
+            st.markdown(f'Antonyms: {list_of_word_variants.antonyms}')
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
