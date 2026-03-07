@@ -1,11 +1,12 @@
 import re
 import requests
+import os
 
 WORD = 'ameliorate'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+THESAURUS_KEY = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
 DEFINITION_KEY = 'shortdef'
 TYPE_OF_SPEECH_KEY = 'fl'
 DATE_KEY = 'date'
@@ -13,7 +14,8 @@ ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
-file_name = "Former Words of the day"
+FILE_NAME = "Former Words of the day"
+
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -21,89 +23,43 @@ def get_response_dictionary(ref, word, key):
     print(url)
     return response.json()
 
-# def offline_data():
-#     try:
-#         if os.path.exists(file_name):
-#             with open(file_name, "r") as f:
-#                 new_data = json.loads(f.read())
-#                 return new_data
-#
-#             # with open(file_name, "w") as f:
-#             #     f.write(json.dumps(new_data))
-#
-#     except ValueError:
-#         messagebox.showerror("Error", "Something went wrong.")
-#
-# def extract_line(data):
-#     for entry in data:
-#         if 'vis' in entry['def'][0][0][1]:
-#             for vis in entry['def'][0][0][1]['vis']:
-#                 if 't' in vis and 'paean' in vis['t']:
-#                     return vis['t']
-#     return None
-#
-# def grab_dt(data):
-#     results = []
-#     for entry in data:
-#         for sense in entry['def']:
-#             for sseq in sense['sseq']:
-#                 for item in sseq:
-#                     if 'dt' in item[0]:
-#                         for dt in item[1]['dt']:
-#                             results.append(dt[1][0]['vis'][0]['t'])
-#     return results
-#
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
+    patterns = [
+        (r"{mat", ''),
+        (r"bc}", ''),
+        (r"ma}", ''),
+        (r"dx}", ''),
+        (r'it}', ''),
+        (r"'text', ", ''),
+        (r']]', ''),
+        (r"et_link", ''),
+        (r":[12]", ''),
+        (r"-ia", ''),
+        (r"et_snote',", ''),
+        (r"'t',", ''),
+        (r"\s+", " "),
+        (r"[\#[/@<>{}=~|?]", ''),
+        (r"et_snote", ''),
+        (r"]", ''),
+        (r"andor", 'and/or'),
+        (r" u ", " 'u' "),
+        (fr"{WORD}{WORD}", fr"{WORD}")
+    ]
+
+    for pattern, replacement in patterns:
+        clean_text = re.sub(pattern, replacement, clean_text)
+
     if sharp == 3:
-
-        clean_text = re.sub(r"{mat", '', clean_text)
-        clean_text = re.sub(r"bc}", '', clean_text)
-        clean_text = re.sub(r"ma}", '', clean_text)
-        clean_text = re.sub(r"dx}", '', clean_text)
-        clean_text = re.sub(r'it}', '', clean_text)
-        clean_text = re.sub(r"'text', ", '', clean_text)
-        clean_text = re.sub(r']]', '', clean_text)
-        clean_text = re.sub(r"et_link", '', clean_text)
-        clean_text = re.sub(r":2", '', clean_text)
-        clean_text = re.sub(r":1", '', clean_text)
-        clean_text = re.sub(r"-ia", '', clean_text)
-        clean_text = re.sub(r"et_snote',", '', clean_text)
-        clean_text = re.sub(r"'t',", '', clean_text)
-
-        # clean_text = re.sub(r"'", '', clean_text)
-        # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
-    clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
-    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"et_snote", '', clean_text)
-    clean_text = re.sub(r"]", '', clean_text)
-    clean_text = re.sub(r"andor", 'and/or', clean_text)
-    clean_text = re.sub(r" u ", " 'u' ", clean_text)
-    if sharp == 2:
-        # clean_text = re.sub(r"ds1", '', clean_text)
-        # clean_text = re.sub(r",", ' or', clean_text)
-        clean_text = re.sub(r'dst2', '', clean_text)
-        clean_text = re.sub(r"ds1a", '', clean_text)
-        clean_text = re.sub(r"dst", '', clean_text)
-        clean_text = re.sub(r"ds1b", '', clean_text)
-        clean_text = re.sub(r'dst2', '', clean_text)
-        clean_text = re.sub(r'ds3', '', clean_text)
-        clean_text = re.sub(r"dx_ety", '', clean_text)
-        clean_text = re.sub(r"dxt", '', clean_text)
-        clean_text = re.sub(r"dsi1", '', clean_text)
-        clean_text = re.sub(r'ds1', '', clean_text)
-        clean_text = re.sub(r'ds2', '', clean_text)
-        clean_text = re.sub(r'.jpg', '', clean_text)
-        clean_text = re.sub(r'.jpeg', '', clean_text)
-        clean_text = re.sub(r'.png', '', clean_text)
-        clean_text = re.sub(r'.gif', '', clean_text)
-    if sharp == 1:
+        clean_text = re.sub(r"\s+", " ", clean_text).strip()
+    elif sharp == 2:
+        clean_text = re.sub(r'dst2|ds1a|dst|ds1b|ds3|dx_ety|dxt|dsi1|ds1|ds2|\.jpg|\.jpeg|\.png|\.gif', '', clean_text)
+    elif sharp == 1:
         clean_text = re.sub(r"', '", '^', clean_text)
-        clean_text = re.sub(r"'", '', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
-    clean_text = str(clean_text)
     print(clean_text)
     print(" ")
     return clean_text
@@ -115,42 +71,25 @@ def list_manager(data, syntax, sharp=None):
         for item in data
     ]
 
-def et_list_manager(data, syntax):
-    return [
-        cleaner(item.get(syntax, NONE_RESULT),3) if item.get(syntax) else NONE_RESULT
-        for item in data
-    ]
 
 def extract_synonyms(data, nyms):
-    nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
+    return [
+        [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
+        for entry in data
+    ]
 
-    for entry in data:
-        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
-        nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
-        print(nyms_lists)
-    return nyms_lists
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
-thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
+thes_data = get_response_dictionary(REF_THESAURUS, WORD, THESAURUS_KEY)
 
-definition_list = list_manager(data, DEFINITION_KEY,sharp=1)
-date_list = list_manager(data, DATE_KEY,sharp=2)
-etymology_list = list_manager(data, ETYMOLOGY_KEY,sharp=3)
+definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
+date_list = list_manager(data, DATE_KEY, sharp=2)
+etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
 
-try:
-    if thes_data:
-        synonyms_list = extract_synonyms(thes_data, SYNONYMS)
-        antonyms_list = extract_synonyms(thes_data, ANTONYMS)
-    else:
-        synonyms_list = NONE_RESULT
-        antonyms_list = NONE_RESULT
+synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else NONE_RESULT
+antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else NONE_RESULT
 
-except Exception as e:
-    synonyms_list = NONE_RESULT
-    antonyms_list = NONE_RESULT
-    print(f"An error occurred: {e}")
-    print(" ")
 
 class WordVariant:
     def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
@@ -165,48 +104,48 @@ class WordVariant:
 def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms, antonyms):
     return [
         WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
-        for definition, type_of_speech, date, etymology, synonyms, antonyms in zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
+        for definition, type_of_speech, date, etymology, synonyms, antonyms in
+        zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
 
-list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list, synonyms_list, antonyms_list)
 
-# Text to List Converter
+list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list,
+                                             synonyms_list, antonyms_list)
+
+
 def split_text(text):
     return text.split('^')
 
-formated_definition = split_text(list_of_word_variants[0].definition)
+
+formatted_definition = split_text(list_of_word_variants[0].definition)
 
 
 def first_definition():
-    print("Formated Definition:")
-    for t in range (len(formated_definition)):
-        print(formated_definition[t])
+    print("Formatted Definition:")
+    for item in formatted_definition:
+        print(item)
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
-    print(f'Amount of items in Format: ' + str(len(formated_definition)))
+    print(f'Amount of items in Format: {len(formatted_definition)}')
 
 
 first_definition()
-print(f'Number of variants: ' + str(len(list_of_word_variants)))
+print(f'Number of variants: {len(list_of_word_variants)}')
 print(" ")
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
 print('')
 
-import os
 
 def list_photo_names(folder_path):
-    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg','.webp','.avif', '.jpeg', '.png', '.gif'))]
+    return [file for file in os.listdir(folder_path) if
+            file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
+
 
 def list_of_prev_wotd_cleaner(clean_text):
     print(clean_text)
     clean_text = str(clean_text)
-    clean_text = re.sub(r'.jpg', '', clean_text)
-    clean_text = re.sub(r'.jpeg', '', clean_text)
-    clean_text = re.sub(r'.png', '', clean_text)
-    clean_text = re.sub(r'.gif', '', clean_text)
-    clean_text = re.sub(r'.webp', '', clean_text)
-    clean_text = re.sub(r'.avif', '', clean_text)
+    clean_text = re.sub(r'\.(jpg|jpeg|png|gif|webp|avif)', '', clean_text)
     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
     clean_text = re.sub(r"]", '', clean_text)
     clean_text = re.sub(r"'", '', clean_text)
@@ -216,7 +155,7 @@ def list_of_prev_wotd_cleaner(clean_text):
     print(clean_list)
     return clean_list
 
+
 # Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-
