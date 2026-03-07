@@ -72,7 +72,8 @@ def guide_func():
 
     if st.sidebar.button('Previous words of the day.'):
         for word in previous_WOTD:
-            st.sidebar.button(word)
+            if st.sidebar.button(word):
+                pass
 
 
 def pull_specific_photo(folder_path, photo_name):
