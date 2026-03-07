@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'disabuse'
+WORD = 'ameliorate'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -58,6 +58,7 @@ def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
     if sharp == 3:
+
         clean_text = re.sub(r"{mat", '', clean_text)
         clean_text = re.sub(r"bc}", '', clean_text)
         clean_text = re.sub(r"ma}", '', clean_text)
@@ -71,10 +72,6 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"-ia", '', clean_text)
         clean_text = re.sub(r"et_snote',", '', clean_text)
         clean_text = re.sub(r"'t',", '', clean_text)
-        clean_text = re.sub(r"dx_ety", '', clean_text)
-        clean_text = re.sub(r"dxt", '', clean_text)
-
-
 
         # clean_text = re.sub(r"'", '', clean_text)
         # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
@@ -104,9 +101,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.gif', '', clean_text)
     if sharp == 1:
         clean_text = re.sub(r"', '", '^', clean_text)
-
-    clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r'phantomphantom', '', clean_text)
+        clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
@@ -130,11 +125,9 @@ def extract_synonyms(data, nyms):
     nyms_lists = []  # List to hold lists of synonyms/antonyms for each entry
 
     for entry in data:
-        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or [NONE_RESULT]
+        entry_nyms_list = [syn for syn_group in entry['meta'].get(nyms, []) for syn in syn_group] or []
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
         print(nyms_lists)
-        print(" ")
-
     return nyms_lists
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
@@ -144,8 +137,6 @@ definition_list = list_manager(data, DEFINITION_KEY,sharp=1)
 date_list = list_manager(data, DATE_KEY,sharp=2)
 etymology_list = list_manager(data, ETYMOLOGY_KEY,sharp=3)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-
-
 
 try:
     if thes_data:
@@ -160,8 +151,6 @@ except Exception as e:
     antonyms_list = NONE_RESULT
     print(f"An error occurred: {e}")
     print(" ")
-
-
 
 class WordVariant:
     def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
@@ -186,7 +175,7 @@ def split_text(text):
     return text.split('^')
 
 formated_definition = split_text(list_of_word_variants[0].definition)
-print(len(formated_definition))
+
 
 def first_definition():
     print("Formated Definition:")
@@ -194,29 +183,40 @@ def first_definition():
         print(formated_definition[t])
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
+    print(f'Amount of items in Format: ' + str(len(formated_definition)))
+
 
 first_definition()
+print(f'Number of variants: ' + str(len(list_of_word_variants)))
+print(" ")
 print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
-print(len(list_of_word_variants))
+print('')
 
 import os
 
 def list_photo_names(folder_path):
-    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg','.webp','.avif', '.jpeg', '.png', '.gif'))]
 
-def list_cleaner(clean_text):
+def list_of_prev_wotd_cleaner(clean_text):
     print(clean_text)
     clean_text = str(clean_text)
     clean_text = re.sub(r'.jpg', '', clean_text)
     clean_text = re.sub(r'.jpeg', '', clean_text)
     clean_text = re.sub(r'.png', '', clean_text)
     clean_text = re.sub(r'.gif', '', clean_text)
-    print(clean_text)
+    clean_text = re.sub(r'.webp', '', clean_text)
+    clean_text = re.sub(r'.avif', '', clean_text)
+    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+    clean_text = re.sub(r"]", '', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
+    clean_text = re.sub(r"2", '', clean_text)
     clean_list = clean_text.split(", ")
+    clean_list.sort(key=str.lower)
     print(clean_list)
     return clean_list
 
 # Example usage
 photo_folder = r"Photos"
-previous_WOTD = list_cleaner(list_photo_names(photo_folder))
+previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
+

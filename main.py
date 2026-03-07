@@ -1,8 +1,8 @@
 import streamlit as st
-
-import wotd
+from wotd import previous_WOTD
 from wotd import WORD
 from wotd import list_of_word_variants
+
 from PIL import Image
 
 favored = 0
@@ -16,6 +16,9 @@ st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 def split_text(text):
     return text.split('^')
 
+def make_formated_text(iteration):
+    formated_definition = split_text(list_of_word_variants[iteration].definition)
+    return formated_definition
 
 formated_definition = split_text(list_of_word_variants[favored].definition)
 formated_etymology = split_text(list_of_word_variants[favored].etymology)
@@ -29,22 +32,25 @@ def first_definition():
     st.markdown(
         f'**Date first used: {list_of_word_variants[favored].date}**')
 
+    st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
+    st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
+
 
 def more_definitions():
     for t in range (num-1):
-        # if list_of_word_variants[t].definition == 'No info available':
-        #     continue
-
+        if list_of_word_variants[t].definition == 'No info available':
+            continue
         st.header(WORD, divider="rainbow")
         st.markdown(
-            f'{list_of_word_variants[t+1].definition}')
+            f'{make_formated_text(t+1)}')
         st.markdown(
             f'**{list_of_word_variants[t+1].type_of_speech}**')
         st.markdown(f'Etymology: {list_of_word_variants[t + 1].etymology}')
         st.markdown(
             f'Date first used: {list_of_word_variants[t+1].date}')
         st.markdown(f'Synonyms: {list_of_word_variants[t+1].synonyms}')
-        st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
+        st.markdown(f'Antonyms: None found')
+        # st.markdown(f'Antonyms: {list_of_word_variants[t + 1].antonyms}')
 
 
 def instructions_app():
@@ -60,10 +66,10 @@ def instructions_app():
     )
 def check_for_no_data(text):
     if text == 'No info available':
-        return False
+        return True
 
     else:
-        return True
+        return False
 
 def guide_func():
     first_definition()
@@ -101,8 +107,6 @@ def guide_func():
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         instructions_app()
 
-    previous_WOTD = wotd.previous_WOTD
-
     if st.sidebar.button('Previous words of the day.'):
         for t in range (len(previous_WOTD)):
             st.sidebar.markdown(previous_WOTD[t])
@@ -122,6 +126,4 @@ def guide_func():
 
 
 guide_func()
-
-
 
