@@ -101,11 +101,11 @@ def guide_func():
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         instructions_app()
 
-    prev_wotd = wotd.previous_WOTD
+    previous_WOTD = wotd.previous_WOTD
 
-    if st.sidebar.button('Prevoius words of the day.'):
-        for t in prev_wotd:
-            st.sidebar.markdown(prev_wotd[t])
+    if st.sidebar.button('Previous words of the day.'):
+        for t in previous_WOTD:
+            st.sidebar.markdown(previous_WOTD[t+1])
 
     import os
 
