@@ -107,6 +107,8 @@ def guide_func():
         for t in prev_wotd:
             st.sidebar.markdown(prev_wotd[t])
 
+    import os
+
     def pull_specific_photo(folder_path, photo_name):
             # Default case (equivalent to else)
         photo_path = os.path.join(folder_path, photo_name)
