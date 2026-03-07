@@ -1,4 +1,6 @@
 import streamlit as st
+
+import wotd
 from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
@@ -99,7 +101,11 @@ def guide_func():
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         instructions_app()
 
-    import os
+    prev_wotd = wotd.previous_WOTD
+
+    if st.sidebar.button('Prevoius words of the day.'):
+        for t in prev_wotd:
+            st.sidebar.markdown(prev_wotd[t])
 
     def pull_specific_photo(folder_path, photo_name):
             # Default case (equivalent to else)

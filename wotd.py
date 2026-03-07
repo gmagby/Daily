@@ -1,7 +1,7 @@
 import re
 import requests
 
-WORD = 'Phantom'
+WORD = 'disabuse'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -134,6 +134,7 @@ def extract_synonyms(data, nyms):
         nyms_lists.append(entry_nyms_list)  # Append the entry's list to the main list
         print(nyms_lists)
         print(" ")
+
     return nyms_lists
 
 data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
@@ -143,6 +144,8 @@ definition_list = list_manager(data, DEFINITION_KEY,sharp=1)
 date_list = list_manager(data, DATE_KEY,sharp=2)
 etymology_list = list_manager(data, ETYMOLOGY_KEY,sharp=3)
 type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
+
+
 
 try:
     if thes_data:
@@ -157,6 +160,8 @@ except Exception as e:
     antonyms_list = NONE_RESULT
     print(f"An error occurred: {e}")
     print(" ")
+
+
 
 class WordVariant:
     def __init__(self, definition, type_of_speech, date, etymology, synonyms=None, antonyms=None):
@@ -195,11 +200,24 @@ print(f'Synonyms List: {synonyms_list}')
 print(f'Antonyms List: {antonyms_list}')
 print(len(list_of_word_variants))
 
-# import os
-#
-# def list_photo_names(folder_path):
-#     return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
-#
-# # Example usage
-# photo_folder = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
-# photo_names = cleaner(list_photo_names(photo_folder), 2)
+import os
+
+def list_photo_names(folder_path):
+    return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
+
+def list_cleaner(clean_text):
+    print(clean_text)
+    clean_text = str(clean_text)
+    clean_text = re.sub(r'.jpg', '', clean_text)
+    clean_text = re.sub(r'.jpeg', '', clean_text)
+    clean_text = re.sub(r'.png', '', clean_text)
+    clean_text = re.sub(r'.gif', '', clean_text)
+    print(clean_text)
+    for t in clean_text:
+        clean_list = clean_text.split(t)
+    print(clean_list)
+    return clean_list
+
+# Example usage
+photo_folder = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
+previous_WOTD = list_cleaner(list_photo_names(photo_folder))
