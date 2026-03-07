@@ -202,9 +202,6 @@ print(len(list_of_word_variants))
 
 import os
 
-today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
-
-
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if file.endswith(('.jpg', '.jpeg', '.png', '.gif'))]
 
