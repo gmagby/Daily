@@ -104,7 +104,7 @@ def guide_func():
     previous_WOTD = wotd.previous_WOTD
 
     if st.sidebar.button('Previous words of the day.'):
-        for t in previous_WOTD:
+        for t in range (len(previous_WOTD)):
             st.sidebar.markdown(previous_WOTD[t+1])
 
     import os
