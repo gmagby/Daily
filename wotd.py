@@ -2,7 +2,7 @@ import re
 import requests
 import os
 
-WORD = 'ameliorate'
+WORD = 'concatenate'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -101,12 +101,23 @@ class WordVariant:
         self.antonyms = antonyms
 
 
-def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms, antonyms):
-    return [
-        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
-        for definition, type_of_speech, date, etymology, synonyms, antonyms in
-        zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
-    ]
+def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms=None, antonyms=None):
+    max_length = max(len(definitions), len(types_of_speech), len(dates), len(etymologies),
+                     len(synonyms) if synonyms else 0, len(antonyms) if antonyms else 0)
+
+    word_variants = []
+
+    for i in range(max_length):
+        definition = definitions[i] if i < len(definitions) else None
+        type_of_speech = types_of_speech[i] if i < len(types_of_speech) else None
+        date = dates[i] if i < len(dates) else None
+        etymology = etymologies[i] if i < len(etymologies) else None
+        synonym = synonyms[i] if synonyms and i < len(synonyms) else None
+        antonym = antonyms[i] if antonyms and i < len(antonyms) else None
+
+        word_variants.append(WordVariant(definition, type_of_speech, date, etymology, synonym, antonym))
+
+    return word_variants
 
 
 list_of_word_variants = create_word_variants(definition_list, type_of_speech_list, date_list, etymology_list,
