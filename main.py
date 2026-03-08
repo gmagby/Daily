@@ -60,7 +60,7 @@ def guide_func():
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(list_of_word_variants[0].antonyms)
 
-    if len(list_of_word_variants) > 1 and check_for_no_data(list_of_word_variants[1].definition):
+    if check_for_no_data(list_of_word_variants[1].definition):
         if st.button("All Definitions"):
             display_more_definitions()
 
