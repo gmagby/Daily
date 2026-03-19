@@ -85,6 +85,8 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"', '", ', ^', clean_text)
         clean_text = re.sub(r"'", '', clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
+    clean_text = re.sub(r"]", '', clean_text)
+
     clean_text = str(clean_text)
     print(clean_text)
     print(" ")
