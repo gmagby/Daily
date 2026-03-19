@@ -45,7 +45,7 @@ def first_definition():
     for t in range(len(formated_definition)):
         st.write(
             f'{formated_definition[t]}')
-    st.write(f'**{list_of_word_variants[favored].type_of_speech}**')
+    st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 
 
