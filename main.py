@@ -21,10 +21,8 @@ def top_of_page():
 def format_text(text):
     return text.split('^')
 
-
 def base_def(word):
     st.markdown()
-
 
 def check_for_no_data(text):
     if text != 'No info available':
@@ -32,9 +30,6 @@ def check_for_no_data(text):
 
     else:
         return False
-
-
-formated_etymology = format_text(list_of_word_variants[favored].etymology)
 
 def display_photo():
     today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
@@ -48,7 +43,6 @@ def first_definition():
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
     # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
     # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
-
 
 def more_definitions():
     for t in range(num - 1):
@@ -92,7 +86,6 @@ def sidebar():
         if st.sidebar.button("Etymology"):
             for t in range(num):
                 st.sidebar.markdown(format_text(list_of_word_variants[t].etymology))
-
     else:
         pass
 
@@ -104,6 +97,15 @@ def sidebar():
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
         else:
             pass
+    url = f'https://www.merriam-webster.com/dictionary/{WORD}'
+    st.sidebar.link_button("Merriam-Webster", url)
+
+    if st.sidebar.button("Instructions to add WOTD to your homescreen"):
+        display_instructions()
+
+    if st.sidebar.button('Previous words of the day.'):
+        for t in range(len(previous_WOTD)):
+            st.sidebar.markdown(previous_WOTD[t])
 
 def guide_func():
     top_of_page()
@@ -117,15 +119,7 @@ def guide_func():
         else:
             pass
 
-    url = f'https://www.merriam-webster.com/dictionary/{WORD}'
-    st.sidebar.link_button("Merriam-Webster", url)
 
-    if st.sidebar.button("Instructions to add WOTD to your homescreen"):
-        display_instructions()
-
-    if st.sidebar.button('Previous words of the day.'):
-        for t in range(len(previous_WOTD)):
-            st.sidebar.markdown(previous_WOTD[t])
 
     # def pull_specific_video(folder_path, video_name):
     #     # Default case (equivalent to else)
