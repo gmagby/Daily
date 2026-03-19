@@ -48,21 +48,21 @@ def more_definitions():
     for t in range(num - 1):
         if check_for_no_data(list_of_word_variants[t].definition):
             pass
-        else:
-            st.header(WORD, divider="rainbow")
-            st.markdown(
-                f'{format_text(list_of_word_variants[t + 1].definition)}')
-            st.markdown(
-                f'**{list_of_word_variants[t + 1].type_of_speech}**')
-            st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
-            st.markdown(
-                f'Date first used: {list_of_word_variants[t + 1].date}')
-            if check_for_no_data(list_of_word_variants[t + 1].synonyms):
-                st.markdown("Synonyms:")
-                st.markdown(list_of_word_variants[t + 1].synonyms)
-                st.markdown("Antonyms:")
-                st.markdown(list_of_word_variants[t + 1].antonyms)
-            # st.markdown(f'Antonyms: None found')
+
+        st.header(WORD, divider="rainbow")
+        st.markdown(
+            f'{format_text(list_of_word_variants[t + 1].definition)}')
+        st.markdown(
+            f'**{list_of_word_variants[t + 1].type_of_speech}**')
+        st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
+        st.markdown(
+            f'Date first used: {list_of_word_variants[t + 1].date}')
+        if check_for_no_data(list_of_word_variants[t + 1].synonyms):
+            st.markdown("Synonyms:")
+            st.markdown(list_of_word_variants[t + 1].synonyms)
+            st.markdown("Antonyms:")
+            st.markdown(list_of_word_variants[t + 1].antonyms)
+        # st.markdown(f'Antonyms: None found')
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
