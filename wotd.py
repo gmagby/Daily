@@ -127,7 +127,7 @@ class WordVariant:
         self.synonyms = synonyms
         self.antonyms = antonyms
 
-def create_word_variants(definitions, types_of_speech, dates, etymologies, synonyms, antonyms):
+def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
     return [
         WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
         for definition, type_of_speech, date, etymology, synonyms, antonyms in
