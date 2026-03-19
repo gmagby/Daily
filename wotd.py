@@ -104,7 +104,6 @@ def list_manager(data, syntax, sharp=None):
         for item in data
     ]
 
-
 def extract_synonyms(data, nyms):
     synonyms = []
     for entry in data:
@@ -114,9 +113,6 @@ def extract_synonyms(data, nyms):
         except (KeyError, TypeError):
             synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
-
-
-
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
@@ -137,6 +133,7 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
 def create_variant(word_selected):
     data = get_data(word_selected)
     thes_data = get_thes_data(word_selected)
+
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -147,7 +144,6 @@ def create_variant(word_selected):
         NONE_RESULT]
 
     variant = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
-
     return variant
 
 list_of_word_variants = create_variant(WORD)
@@ -156,31 +152,26 @@ list_of_word_variants = create_variant(WORD)
 def format_text(text):
     return text.split('^')
 
-
 formated_definition = format_text(list_of_word_variants[0].definition)
 
-
 def first_definition():
-    print("Formated Definition:")
+    print("Formated Text:")
     for t in range(len(formated_definition)):
         print(formated_definition[t])
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
     print(f'Amount of items in Format: ' + str(len(formated_definition)))
-
+    print(f'Number of variants: ' + str(len(list_of_word_variants)))
+    print(" ")
+    print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
+    print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
+    print('')
 
 first_definition()
-print(f'Number of variants: ' + str(len(list_of_word_variants)))
-print(" ")
-print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
-print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
-print('')
-
 
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
-
 
 def list_of_prev_wotd_cleaner(clean_text):
     print(clean_text)

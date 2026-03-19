@@ -46,9 +46,6 @@ def first_definition():
         st.write(
             f'{formated_definition[t]}')
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-
-
-
     # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
     # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
 
@@ -72,14 +69,12 @@ def more_definitions():
             st.markdown(list_of_word_variants[t + 1].antonyms)
         # st.markdown(f'Antonyms: None found')
 
-
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
     st.sidebar.markdown(
         'Safari Instructions: [Here](https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)')
     st.sidebar.markdown(
         'Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
-
 
 def pull_specific_photo(folder_path, photo_name):
     # Default case (equivalent to else)
@@ -89,11 +84,7 @@ def pull_specific_photo(folder_path, photo_name):
     else:
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
-
-def guide_func():
-    top_of_page()
-    first_definition()
-
+def sidebar():
     st.sidebar.title(WORD)
     st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
@@ -113,6 +104,11 @@ def guide_func():
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
         else:
             pass
+
+def guide_func():
+    top_of_page()
+    first_definition()
+    sidebar()
 
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
