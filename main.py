@@ -48,20 +48,21 @@ def more_definitions():
     for t in range(num - 1):
         if check_for_no_data(list_of_word_variants[t].definition):
             pass
-        st.header(WORD, divider="rainbow")
-        st.markdown(
-            f'{format_text(list_of_word_variants[t + 1].definition)}')
-        st.markdown(
-            f'**{list_of_word_variants[t + 1].type_of_speech}**')
-        st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
-        st.markdown(
-            f'Date first used: {list_of_word_variants[t + 1].date}')
-        if check_for_no_data(list_of_word_variants[t + 1].synonyms):
-            st.markdown("Synonyms:")
-            st.markdown(list_of_word_variants[t + 1].synonyms)
-            st.markdown("Antonyms:")
-            st.markdown(list_of_word_variants[t + 1].antonyms)
-        # st.markdown(f'Antonyms: None found')
+        else:
+            st.header(WORD, divider="rainbow")
+            st.markdown(
+                f'{format_text(list_of_word_variants[t + 1].definition)}')
+            st.markdown(
+                f'**{list_of_word_variants[t + 1].type_of_speech}**')
+            st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
+            st.markdown(
+                f'Date first used: {list_of_word_variants[t + 1].date}')
+            if check_for_no_data(list_of_word_variants[t + 1].synonyms):
+                st.markdown("Synonyms:")
+                st.markdown(list_of_word_variants[t + 1].synonyms)
+                st.markdown("Antonyms:")
+                st.markdown(list_of_word_variants[t + 1].antonyms)
+            # st.markdown(f'Antonyms: None found')
 
 def display_instructions():
     st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
@@ -77,6 +78,7 @@ def pull_specific_photo(folder_path, photo_name):
         return Image.open(photo_path)
     else:
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
 
 def sidebar():
     st.sidebar.title(WORD)
@@ -111,28 +113,12 @@ def guide_func():
     top_of_page()
     first_definition()
     sidebar()
-
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
             if st.button("All Definitions"):
                 more_definitions()
         else:
             pass
-
-
-
-    # def pull_specific_video(folder_path, video_name):
-    #     # Default case (equivalent to else)
-    #     photo_path = os.path.join(folder_path, video_name)
-    #     if os.path.exists(photo_path):
-    #         return Image.open(photo_path)
-    #     else:
-    #         raise FileNotFoundError(f"The photo '{video_name}' does not exist in the specified folder.")
-    #
-    #
-    # today_video = play_video(r"Photos", f"{WORD}.mp4")
-    # st.video(today_video)
-
 
 if __name__ == "__main__":
     guide_func()

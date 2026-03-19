@@ -33,3 +33,15 @@
 #                             results.append(dt[1][0]['vis'][0]['t'])
 #     return results
 #
+#
+# def pull_specific_video(folder_path, video_name):
+#     # Default case (equivalent to else)
+#     photo_path = os.path.join(folder_path, video_name)
+#     if os.path.exists(photo_path):
+#         return Image.open(photo_path)
+#     else:
+#         raise FileNotFoundError(f"The photo '{video_name}' does not exist in the specified folder.")
+#
+#
+# today_video = play_video(r"Photos", f"{WORD}.mp4")
+# st.video(today_video)
