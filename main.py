@@ -13,6 +13,8 @@ def top_of_page():
     st.header("Word of the Day", divider="rainbow")
     st.title(WORD)
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+    st.markdown(
+        f'**Date first used: {list_of_word_variants[favored].date}**')
 
 
 # Text to List Converter
@@ -44,8 +46,7 @@ def first_definition():
         st.write(
             f'{formated_definition[t]}')
 
-    st.markdown(
-        f'**Date first used: {list_of_word_variants[favored].date}**')
+
 
     # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
     # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
