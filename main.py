@@ -20,10 +20,6 @@ def top_of_page():
 
 # Text to List Converter
 def format_text(text):
-
-    text = str(text)
-    text = re.sub(r"[\#[/@<>{}=~|?]", '', text)
-    text = re.sub(r"]", '', text)
     text = text.split('^')
     return text
 
