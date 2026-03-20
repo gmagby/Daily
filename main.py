@@ -93,7 +93,7 @@ def sidebar():
     if check_for_no_data(list_of_word_variants[favored].etymology):
         if st.sidebar.button("Etymology"):
             for t in range(num):
-                st.sidebar.markdown(format_text(list_of_word_variants[t].etymology))
+                st.sidebar.markdown(list_of_word_variants([t].etymology))
     else:
         pass
 
