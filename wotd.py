@@ -88,13 +88,13 @@ def cleaner(clean_text, sharp=None):
         return clean_text
 
     if sharp == 3:
-        base_cleaner(etymology_cleaner(clean_text))
+        clean_text = base_cleaner(etymology_cleaner(clean_text))
 
     if sharp == 2:
-        base_cleaner(date_cleaner(clean_text))
+        clean_text = base_cleaner(date_cleaner(clean_text))
 
     if sharp == 1:
-        definition_cleaner(clean_text)
+        clean_text = base_cleaner(definition_cleaner(clean_text))
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
