@@ -35,7 +35,7 @@ def get_thes_data(word_selected):
 def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
-    if sharp == 3:
+    def etymology_cleaner(clean_text):
         clean_text = re.sub(r"dx_ety}", '', clean_text)
         clean_text = re.sub(r"mat}", '', clean_text)
         clean_text = re.sub(r"bc}", '', clean_text)
@@ -50,18 +50,14 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r":1", '', clean_text)
         clean_text = re.sub(r"-ia", '', clean_text)
         clean_text = re.sub(r"et_snote',", '', clean_text)
+        clean_text = re.sub(r"et_snote", '', clean_text)
         clean_text = re.sub(r"'t',", '', clean_text)
         clean_text = re.sub(r"', '", ', ^', clean_text)
-
-        # clean_text = re.sub(r"'", '', clean_text)
-        # clean_text = re.sub(r"[^a-zA-Z0-9:]", " ", clean_text)
-    clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
-    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"et_snote", '', clean_text)
-    clean_text = re.sub(r"]", '', clean_text)
-    clean_text = re.sub(r"andor", 'and/or', clean_text)
-    clean_text = re.sub(r" u ", " 'u' ", clean_text)
-    if sharp == 2:
+        clean_text = re.sub(r"andor", 'and/or', clean_text)
+    def definition_cleaner(clean_text):
+        clean_text = re.sub(r"', '", ', ^', clean_text)
+        clean_text = re.sub(r"'", '', clean_text)
+    def date_cleaner(clean_text):
         # clean_text = re.sub(r"ds1", '', clean_text)
         # clean_text = re.sub(r",", ' or', clean_text)
         clean_text = re.sub(r'dst2', '', clean_text)
@@ -81,12 +77,22 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.jpeg', '', clean_text)
         clean_text = re.sub(r'.png', '', clean_text)
         clean_text = re.sub(r'.gif', '', clean_text)
-    if sharp == 1:
-        clean_text = re.sub(r"', '", ', ^', clean_text)
-        clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r"\s+", " ", clean_text).strip()
-    clean_text = re.sub(r"]", '', clean_text)
+    def base_cleaner(clean_text):
+        clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
+        clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+        clean_text = re.sub(r"]", '', clean_text)
+        clean_text = re.sub(r" u ", " 'u' ", clean_text)
 
+    if sharp == 3:
+        base_cleaner(etymology_cleaner(clean_text))
+
+    if sharp == 2:
+        date_cleaner(base_cleaner(clean_text))
+
+    if sharp == 1:
+        base_cleaner(definition_cleaner(clean_text))
+
+    clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
     print(" ")
