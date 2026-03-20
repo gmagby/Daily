@@ -14,8 +14,6 @@ def top_of_page():
     st.header("Word of the Day", divider="rainbow")
     st.title(WORD)
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
-    st.markdown(
-        f'**Date first used: {list_of_word_variants[favored].date}**')
 
 
 # Text to List Converter
