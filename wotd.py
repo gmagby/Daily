@@ -87,17 +87,16 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"]", '', clean_text)
         clean_text = re.sub(r" u ", " 'u' ", clean_text)
         clean_text = re.sub(r"'", '', clean_text)
-
         return clean_text
 
-    if sharp == 3:
-        clean_text = base_cleaner(etymology_cleaner(clean_text))
-
-    if sharp == 2:
-        clean_text = date_cleaner(base_cleaner(clean_text))
-
-    if sharp == 1:
+    if sharp == 1:  # Definition cleaner
         clean_text = base_cleaner(definition_cleaner(clean_text))
+    if sharp == 2:  # Date cleaner
+        clean_text = date_cleaner(base_cleaner(clean_text))
+    if sharp == 3:  # Etymology cleaner
+        clean_text = base_cleaner(etymology_cleaner(clean_text))
+    if sharp == 4:
+        base_cleaner(clean_text)
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
@@ -153,10 +152,8 @@ def create_variant(word_selected):
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
     type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-    synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else [
-        NONE_RESULT]
-    antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
-        NONE_RESULT]
+    synonyms_list = cleaner(extract_synonyms(thes_data, SYNONYMS),sharp=4)
+    antonyms_list = cleaner(extract_synonyms(thes_data, ANTONYMS),sharp=4)
 
     variant = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variant
