@@ -90,7 +90,7 @@ def cleaner(clean_text, sharp=None):
         date_cleaner(base_cleaner(clean_text))
 
     if sharp == 1:
-        base_cleaner(definition_cleaner(clean_text))
+        (definition_cleaner(clean_text))
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
