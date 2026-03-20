@@ -4,6 +4,7 @@ from wotd import WORD
 from wotd import list_of_word_variants
 from PIL import Image
 import os
+import re
 
 favored = 0
 num = len(list_of_word_variants)
@@ -19,6 +20,9 @@ def top_of_page():
 
 # Text to List Converter
 def format_text(text):
+    text = str(text)
+    text = re.sub(r"[\#[/@<>{}=~|?]", '', text)
+    text = re.sub(r"]", '', text)
     return text.split('^')
 
 def base_def(word):
