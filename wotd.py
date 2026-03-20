@@ -54,9 +54,11 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"'t',", '', clean_text)
         clean_text = re.sub(r"', '", ', ^', clean_text)
         clean_text = re.sub(r"andor", 'and/or', clean_text)
+        return clean_text
     def definition_cleaner(clean_text):
         clean_text = re.sub(r"', '", ', ^', clean_text)
         clean_text = re.sub(r"'", '', clean_text)
+        return clean_text
     def date_cleaner(clean_text):
         # clean_text = re.sub(r"ds1", '', clean_text)
         # clean_text = re.sub(r",", ' or', clean_text)
@@ -77,11 +79,13 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.jpeg', '', clean_text)
         clean_text = re.sub(r'.png', '', clean_text)
         clean_text = re.sub(r'.gif', '', clean_text)
+        return clean_text
     def base_cleaner(clean_text):
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
         clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
         clean_text = re.sub(r"]", '', clean_text)
         clean_text = re.sub(r" u ", " 'u' ", clean_text)
+        return clean_text
 
     if sharp == 3:
         base_cleaner(etymology_cleaner(clean_text))
@@ -90,7 +94,7 @@ def cleaner(clean_text, sharp=None):
         date_cleaner(base_cleaner(clean_text))
 
     if sharp == 1:
-        (definition_cleaner(clean_text))
+        definition_cleaner(clean_text)
 
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
