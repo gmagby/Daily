@@ -1,3 +1,25 @@
+def save_data(new_data):
+    file_name = "Words Data.txt"
+    try:
+        if os.path.exists(file_name):
+            with open(file_name, "wb") as f:  # Use 'wb' (write binary) mode
+                pickle.dump(new_data, f)
+
+    except ValueError:
+        raise FileNotFoundError("try again")
+
+def read_data(chosen_word):
+    file_name = "Words Data.txt"
+    try:
+        if os.path.exists(file_name):
+            with open(file_name, "r") as f:
+                new_data = json.loads(f.read(chosen_word))
+
+            return new_data
+    except ValueError:
+        raise FileNotFoundError("try again")
+
+
 
 
 # def offline_data():

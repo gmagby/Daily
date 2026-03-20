@@ -1,3 +1,5 @@
+import json
+import pickle
 import re
 import requests
 import os
@@ -16,7 +18,6 @@ SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 
-
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
     response = requests.get(url)
@@ -30,7 +31,6 @@ def get_data(word_selected):
 def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
-
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
@@ -88,7 +88,6 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r" u ", " 'u' ", clean_text)
         clean_text = re.sub(r"'", '', clean_text)
         return clean_text
-
     if sharp == 1:  # Definition cleaner
         clean_text = base_cleaner(definition_cleaner(clean_text))
     if sharp == 2:  # Date cleaner
@@ -97,7 +96,6 @@ def cleaner(clean_text, sharp=None):
         clean_text = base_cleaner(etymology_cleaner(clean_text))
     if sharp == 4:
         base_cleaner(clean_text)
-
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
     print(clean_text)
@@ -144,22 +142,21 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
         zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
 
-def create_variant(word_selected):
+def create_variants(word_selected):
     data = get_data(word_selected)
     thes_data = get_thes_data(word_selected)
-
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
     type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-    synonyms_list = cleaner(extract_synonyms(thes_data, SYNONYMS),sharp=4)
-    antonyms_list = cleaner(extract_synonyms(thes_data, ANTONYMS),sharp=4)
+    synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else [
+        NONE_RESULT]
+    antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
+        NONE_RESULT]
+    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
+    return variants
 
-    variant = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
-    return variant
-
-list_of_word_variants = create_variant(WORD)
-
+list_of_word_variants = create_variants(WORD)
 # Text to List Converter
 def format_text(text):
     return text.split('^')
@@ -210,7 +207,6 @@ def list_of_prev_wotd_cleaner(clean_text):
 # Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-
 
 def all_words():
     for t in range(len(previous_WOTD)):
