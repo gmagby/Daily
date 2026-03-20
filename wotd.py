@@ -91,7 +91,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = base_cleaner(etymology_cleaner(clean_text))
 
     if sharp == 2:
-        clean_text = base_cleaner(date_cleaner(clean_text))
+        clean_text = date_cleaner(base_cleaner(clean_text))
 
     if sharp == 1:
         clean_text = base_cleaner(definition_cleaner(clean_text))
