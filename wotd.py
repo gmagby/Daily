@@ -54,6 +54,8 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"'t',", '', clean_text)
         clean_text = re.sub(r"', '", ', ^', clean_text)
         clean_text = re.sub(r"andor", 'and/or', clean_text)
+        clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+        clean_text = re.sub(r"]", '', clean_text)
         return clean_text
     def definition_cleaner(clean_text):
         clean_text = re.sub(r"', '", ', ^', clean_text)
