@@ -24,7 +24,7 @@ def format_text(text):
     text = str(text)
     text = re.sub(r"[\#[/@<>{}=~|?]", '', text)
     text = re.sub(r"]", '', text)
-    return
+    return text
 
 def base_def(word):
     st.markdown()
