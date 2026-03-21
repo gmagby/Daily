@@ -108,7 +108,7 @@ def sidebar(chosen_word):
 
 def guide_func(chosen_word):
     top_of_page(chosen_word)
-    first_definition(chosen_word)
+    first_definition()
     sidebar(chosen_word)
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
