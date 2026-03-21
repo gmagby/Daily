@@ -32,25 +32,16 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def pull_specific_file(folder_path, file_name):
-    # Default case (equivalent to else)
-    folder_path = os.path.join(folder_path, file_name)
-    if os.path.exists(folder_path):
-        data = json.loads(open(folder_path, "r").read())
-        return data
-    else:
-        raise FileNotFoundError(f"The photo '{file_name}' does not exist in the specified folder.")
-pull_specific_file('txt_files', 'aver.txt')
-
 def save_to_file(chosen_word, data):
     file_name = f'{chosen_word}.txt'
-    try:
-        if os.path.exists(file_name):
-            with open(file_name, "w") as f:
-                f.write(json.dumps(data))
+    for t in previous_WOTD:
+        try:
+            if os.path.exists(file_name):
+                with open(file_name, "w") as f:
+                    f.write(json.dumps(data))
 
-    except ValueError:
-        print("Error", "Something went wrong.")
+        except ValueError:
+            print("Error", "Something went wrong.")
 
 def read_data(chosen_word):
     file_name = f'{chosen_word}.txt'
@@ -176,7 +167,7 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = read_data(WORD)
+    data = read_data(word_selected)
     thes_data = read_data(WORD)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)

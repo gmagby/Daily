@@ -67,3 +67,51 @@ def read_data(chosen_word):
 #
 # today_video = play_video(r"Photos", f"{WORD}.mp4")
 # st.video(today_video)
+
+
+import requests
+
+WORD = 'Paean'
+REF_DICTIONARY = "collegiate"
+REF_THESAURUS = "thesaurus"
+DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
+Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
+DEFINITION_KEY = 'shortdef'
+TYPE_OF_SPEECH_KEY = 'fl'
+DATE_KEY = 'date'
+ETYMOLOGY_KEY = 'et'
+SYNONYMS = 'syns'
+ANTONYMS = 'ants'
+NONE_RESULT = 'No info available'
+file_name = "Former Words of the day"
+
+def get_response_dictionary(ref, word, key):
+    url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
+    response = requests.get(url)
+    print(url)
+    return response.json()
+
+data = get_response_dictionary(REF_DICTIONARY, WORD, DICTIONARY_KEY)
+thes_data = get_response_dictionary(REF_THESAURUS, WORD, Thesaurus_key)
+
+
+def extract_line(data):
+    for entry in data:
+        if 'vis' in entry['def'][0][0][1]:
+            for vis in entry['def'][0][0][1]['vis']:
+                if 't' in vis and 'paean' in vis['t']:
+                    return vis['t']
+    return None
+
+def grab_dt(data):
+    results = []
+    for entry in data:
+        for sense in entry['def']:
+            for sseq in sense['sseq']:
+                for item in sseq:
+                    if 'dt' in item[0]:
+                        for dt in item[1]['dt']:
+                            results.append(dt[1][0]['vis'][0]['t'])
+    return results
+
+print(grab_dt(data))
