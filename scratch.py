@@ -32,16 +32,6 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def pull_specific_file(folder_path, file_name):
-    # Default case (equivalent to else)
-    folder_path = os.path.join(folder_path, file_name)
-    if os.path.exists(folder_path):
-        data = json.loads(open(folder_path, "r").read())
-        return data
-    else:
-        raise FileNotFoundError(f"The photo '{file_name}' does not exist in the specified folder.")
-pull_specific_file('txt_files', 'aver.txt')
-
 def save_to_file(chosen_word, data):
     file_name = f'{chosen_word}.txt'
     try:
@@ -54,11 +44,9 @@ def save_to_file(chosen_word, data):
 
 def read_data(chosen_word):
     file_name = f'{chosen_word}.txt'
-    folder_path = 'txt_files'
     try:
-        folder_path = os.path.join(folder_path, file_name)
-        if os.path.exists(folder_path):
-            with open(folder_path, "r") as f:
+        if os.path.exists(file_name):
+            with open(file_name, "r") as f:
                 data = json.loads(f.read())
                 return data
 
@@ -149,6 +137,12 @@ def list_manager(data, syntax, sharp=None):
         for item in data
     ]
 
+def editable_list_manager(data,need):
+    need_list = []
+    for item in data:
+        new_item = item.get(need)
+        need_list.append(new_item)
+
 def extract_synonyms(data, nyms):
     synonyms = []
     for entry in data:
@@ -168,25 +162,25 @@ class WordVariant:
         self.synonyms = synonyms
         self.antonyms = antonyms
 
-def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
+def create_word_variants(definitions, dates, etymologies, types_of_speech):
     return [
         WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
         for definition, type_of_speech, date, etymology, synonyms, antonyms in
-        zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
+        zip(definitions, types_of_speech, dates, etymologies)
     ]
 
 def create_variants(word_selected):
     data = read_data(WORD)
     thes_data = read_data(WORD)
-    definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
-    date_list = list_manager(data, DATE_KEY, sharp=2)
-    etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
-    type_of_speech_list = list_manager(data, TYPE_OF_SPEECH_KEY)
-    synonyms_list = extract_synonyms(thes_data, SYNONYMS) if thes_data else [
-        NONE_RESULT]
-    antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
-        NONE_RESULT]
-    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
+    definition_list = editable_list_manager(data, DEFINITION_KEY, )
+    date_list = editable_list_manager(data, DATE_KEY, )
+    etymology_list = editable_list_manager(data, ETYMOLOGY_KEY, )
+    type_of_speech_list = editable_list_manager(data, TYPE_OF_SPEECH_KEY)
+    # synonyms_list = editable_list_manager(thes_data, SYNONYMS) if thes_data else [
+    #     NONE_RESULT]
+    # antonyms_list = editable_list_manager(thes_data, ANTONYMS) if thes_data else [
+    #     NONE_RESULT]
+    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list)
     return variants
 
 list_of_word_variants = create_variants(WORD)
