@@ -104,7 +104,8 @@ def sidebar(chosen_word):
 
     if st.sidebar.button('Previous words of the day.'):
         for t in range(len(previous_WOTD)):
-            st.sidebar.markdown(previous_WOTD[t])
+            if st.sidebar.button(previous_WOTD[t]):
+                guide_func(t)
 
 def guide_func(chosen_word):
     top_of_page(chosen_word)
