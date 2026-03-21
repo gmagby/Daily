@@ -118,6 +118,6 @@ def guide_func(chosen_word):
         else:
             pass
 
-if __name__ == "__main__":
-    guide_func(WORD)
-    display_photo(WORD)
+
+guide_func(WORD)
+display_photo(WORD)
