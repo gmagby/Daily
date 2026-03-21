@@ -69,7 +69,7 @@ def update_variable():
     my_variable = "Updated value at " + datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(my_variable)
 
-my_variable = wotd.WORD
+my_variable = wotd.chosen_word
 
 schedule.every().day.at("11:00").do(update_variable)
 

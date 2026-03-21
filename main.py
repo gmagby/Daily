@@ -1,18 +1,19 @@
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
-from wotd import list_of_word_variants
+from wotd import whole_thing
 from PIL import Image
 import os
 import re
 
 favored = 0
+list_of_word_variants = whole_thing(WORD)
 num = len(list_of_word_variants)
 
 
-def top_of_page():
+def top_of_page(chosen_word):
     st.header("Word of the Day", divider="rainbow")
-    st.title(WORD)
+    st.title(chosen_word)
     st.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
 
@@ -21,9 +22,6 @@ def format_text(text):
     text = text.split('^')
     return text
 
-def base_def(word):
-    st.markdown()
-
 def check_for_no_data(text):
     if text != 'No info available':
         return True
@@ -31,8 +29,8 @@ def check_for_no_data(text):
     else:
         return False
 
-def display_photo():
-    today_photo = pull_specific_photo(r"Photos", f"{WORD}.jpg")
+def display_photo(chosen_word):
+    today_photo = pull_specific_photo(r"Photos", f"{chosen_word}.jpg")
     st.image(today_photo)
 
 def first_definition():
@@ -43,12 +41,12 @@ def first_definition():
     # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
     # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
 
-def more_definitions():
+def more_definitions(chosen_word):
     for t in range(num - 1):
         if check_for_no_data(list_of_word_variants[t].definition):
             pass
 
-        st.header(WORD, divider="rainbow")
+        st.header(chosen_word, divider="rainbow")
         st.markdown(
             f'{format_text(list_of_word_variants[t + 1].definition)}')
         st.markdown(
@@ -79,8 +77,8 @@ def pull_specific_photo(folder_path, photo_name):
         raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
 
-def sidebar():
-    st.sidebar.title(WORD)
+def sidebar(chosen_word):
+    st.sidebar.title(chosen_word)
     st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
 
     if check_for_no_data(list_of_word_variants[favored].etymology):
@@ -98,7 +96,7 @@ def sidebar():
             st.sidebar.markdown(list_of_word_variants[favored].antonyms)
         else:
             pass
-    url = f'https://www.merriam-webster.com/dictionary/{WORD}'
+    url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
     st.sidebar.link_button("Merriam-Webster", url)
 
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
@@ -108,10 +106,10 @@ def sidebar():
         for t in range(len(previous_WOTD)):
             st.sidebar.markdown(previous_WOTD[t])
 
-def guide_func():
-    top_of_page()
-    first_definition()
-    sidebar()
+def guide_func(chosen_word):
+    top_of_page(chosen_word)
+    first_definition(chosen_word)
+    sidebar(chosen_word)
     if num > 1:
         if check_for_no_data(list_of_word_variants[1].definition):
             if st.button("All Definitions"):
@@ -120,5 +118,5 @@ def guide_func():
             pass
 
 if __name__ == "__main__":
-    guide_func()
-    display_photo()
+    guide_func(WORD)
+    display_photo(WORD)
