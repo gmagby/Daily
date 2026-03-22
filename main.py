@@ -113,7 +113,7 @@ def main():
     def guide_func(chosen_word):
         top_of_page(chosen_word)
         first_definition(chosen_word)
-        sidebar(chosen_word)
+        # sidebar(chosen_word)
         if num > 1:
             if check_for_no_data(list_of_word_variants[1].definition):
                 if st.button("All Definitions"):
@@ -122,12 +122,11 @@ def main():
                 pass
         display_photo(WORD)
     def new_word():
-        if st.sidebar.button('Previous words of the day.'):
-            for t in range(len(previous_WOTD)):
-                if st.sidebar.button(previous_WOTD[t]):
-                    guide_func(previous_WOTD[t])
-                else:
-                    guide_func(WORD)
+        # if st.sidebar.button('Previous words of the day.'):
+        for t in range(len(previous_WOTD)):
+            if st.sidebar.button(previous_WOTD[t]):
+                return t
+    guide_func(WORD)
     new_word()
 
 
