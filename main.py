@@ -14,6 +14,7 @@ def main():
 
     favored = 0
     num = len(list_of_word_variants)
+    test = 0
 
 
     def top_of_page(chosen_word):
@@ -125,10 +126,10 @@ def main():
             for t in range(len(previous_WOTD)):
                 if st.sidebar.button(previous_WOTD[t]):
                     guide_func(t)
-
-    guide_func(WORD)
-
-    new_word()
+    if test == 1:
+        new_word()
+    else:
+        guide_func(WORD)
 
 
 
