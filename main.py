@@ -1,3 +1,5 @@
+from shutil import chown
+
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
@@ -11,6 +13,8 @@ def compile_data(chosen_word):
     return list_of_word_variants
 
 list_of_word_variants = compile_data(WORD)
+
+chosen_word = st.sidebar.selectbox()
 
 favored = 0
 num = len(list_of_word_variants)
@@ -72,6 +76,6 @@ def guide_func(chosen_word):
 
 
 if __name__ == "__main__":
-    guide_func()
-    display_photo()
+    guide_func(chosen_word)
+    display_photo(chosen_word)
     new_word()
