@@ -14,7 +14,7 @@ def compile_data(chosen_word):
 
 list_of_word_variants = compile_data(WORD)
 
-
+chosen_word = compile_data(WORD)
 
 favored = 0
 num = len(list_of_word_variants)
@@ -67,7 +67,7 @@ def new_word():
                 chosen_word = previous_WOTD[t]
                 return chosen_word
 
-chosen_word = st.sidebar.button(new_word())
+chosen_word = st.sidebar.button("p")
 
 
 def guide_func(chosen_word):
