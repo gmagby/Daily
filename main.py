@@ -127,6 +127,6 @@ def new_word():
 
 
 if __name__ == "__main__":
-    guide_func()
-    display_photo()
+    guide_func(WORD)
+    display_photo(WORD)
     new_word()
