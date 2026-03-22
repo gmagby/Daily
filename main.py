@@ -127,6 +127,8 @@ def new_word():
             if st.sidebar.button(previous_WOTD[t]):
                 guide_func(t)
 
-guide_func(WORD)
-display_photo(WORD)
-new_word()
+
+if __name__ == "__main__":
+    guide_func()
+    display_photo()
+    new_word()
