@@ -125,11 +125,10 @@ def main():
         if st.sidebar.button('Previous words of the day.'):
             for t in range(len(previous_WOTD)):
                 if st.sidebar.button(previous_WOTD[t]):
-                    guide_func(t)
-    if test == 1:
-        new_word()
-    else:
-        guide_func(WORD)
+                    guide_func(previous_WOTD[t])
+                else:
+                    guide_func(WORD)
+    new_word()
 
 
 
