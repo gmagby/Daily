@@ -119,6 +119,7 @@ def main():
                     more_definitions(chosen_word)
             else:
                 pass
+        display_photo(WORD)
     def new_word():
         if st.sidebar.button('Previous words of the day.'):
             for t in range(len(previous_WOTD)):
@@ -126,7 +127,7 @@ def main():
                     guide_func(t)
 
     guide_func(WORD)
-    display_photo(WORD)
+
     new_word()
 
 
