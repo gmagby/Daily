@@ -5,30 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
-      <change afterPath="$PROJECT_DIR$/Photos/Decadent.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Elegy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Lethargy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Mite.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Nabob.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Semite.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/Starboard.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/atavism.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/chagrin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/credulous.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/dialectic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/epicene.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/mire.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/nominally.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/sardonic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/satiety.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/save_word.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/vulcanization.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Save_words.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Yttrium1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Yttrium2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/code_for_later.py" beforeDir="false" afterPath="$PROJECT_DIR$/code_for_later.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save_word.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wotd.py" beforeDir="false" afterPath="$PROJECT_DIR$/wotd.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +76,7 @@
       <recent name="C:\Users\gabem\PythonProject\PythonProject\Photos" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.wotd">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Save_words" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
@@ -187,10 +167,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.wotd" />
         <item itemvalue="Python.scratch" />
         <item itemvalue="Python.Save_words" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -208,46 +188,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1772922486182</created>
-      <option name="number" value="00097" />
-      <option name="presentableId" value="LOCAL-00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1772922486182</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1772922556119</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1772922556119</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1772922798028</created>
-      <option name="number" value="00099" />
-      <option name="presentableId" value="LOCAL-00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1772922798028</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1772922836160</created>
-      <option name="number" value="00100" />
-      <option name="presentableId" value="LOCAL-00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1772922836160</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1772946090961</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1772946090961</updated>
     </task>
     <task id="LOCAL-00102" summary="Initial">
       <option name="closed" value="true" />
@@ -601,7 +541,47 @@
       <option name="project" value="LOCAL" />
       <updated>1774060406484</updated>
     </task>
-    <option name="localTasksCounter" value="146" />
+    <task id="LOCAL-00146" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1774073600630</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1774073600630</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1774074488899</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1774074488899</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1774074519128</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1774074519128</updated>
+    </task>
+    <task id="LOCAL-00149" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1774074697983</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1774074697983</updated>
+    </task>
+    <task id="LOCAL-00150" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1774074733362</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1774074733362</updated>
+    </task>
+    <option name="localTasksCounter" value="151" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -1,13 +1,20 @@
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
-from wotd import whole_thing
+
 from PIL import Image
+from wotd import create_variants
 import os
 import re
 
+
+def compile_data(chosen_word):
+    list_of_word_variants= create_variants(chosen_word)
+    return list_of_word_variants
+
+list_of_word_variants = compile_data(WORD)
+
 favored = 0
-list_of_word_variants = whole_thing(WORD)
 num = len(list_of_word_variants)
 
 
