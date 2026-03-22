@@ -1,127 +1,132 @@
-import json
-import pickle
-import re
-import requests
+import streamlit as st
+from wotd import previous_WOTD
+from wotd import WORD
+from PIL import Image
+from wotd import create_variants
 import os
 
-WORD = 'brinkmanship'
-other_word = 'aver'
-REF_DICTIONARY = "collegiate"
-REF_THESAURUS = "thesaurus"
-DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
-Thesaurus_key = '2431331e-690c-4d83-96ac-1f4e9cb350d5'
-DEFINITION_KEY = 'shortdef'
-TYPE_OF_SPEECH_KEY = 'fl'
-DATE_KEY = 'date'
-ETYMOLOGY_KEY = 'et'
-SYNONYMS = 'syns'
-ANTONYMS = 'ants'
-NONE_RESULT = 'No info available'
-PHOTO_FOLDER = r"Photos"
-TXT_FOLDER = 'txt_files'
 
-def get_response_dictionary(ref, word, key):
-    url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
-    response = requests.get(url)
-    print(url)
-    return response.json()
+def compile_data(chosen_word):
+    list_of_word_variants= create_variants(chosen_word)
+    return list_of_word_variants
 
-def get_data(word_selected):
-    data = get_response_dictionary(REF_DICTIONARY, word_selected, DICTIONARY_KEY)
-    return data
+list_of_word_variants = compile_data(WORD)
 
-def get_thes_data(word_selected):
-    thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
-    return thes_data
-
-def save_to_file(chosen_word):
-    file_name = f'{chosen_word}.txt'
-    try:
-        if os.path.exists(file_name):
-            with open(file_name, "w") as f:
-                f.write(json.dumps(get_data(chosen_word)))
-
-    except ValueError:
-        print("Error", "Something went wrong.")
-
-def read_data(chosen_word):
-    file_name = f'{chosen_word}.txt'
-    try:
-        if os.path.exists(file_name):
-            with open(file_name, "r") as f:
-                new_data = json.loads(f.read())
-                return new_data
-
-    except ValueError:
-       print("Error", "Something went wrong.")
+favored = 0
+num = len(list_of_word_variants)
 
 
-def editable_list_manager(data,need):
-    need_list = []
-    for item in data:
-        new_item = item.get(need)
-        need_list.append(new_item)
-
-    return need_list
-p = editable_list_manager(read_data(WORD), DATE_KEY)
-print(p)
+def top_of_page(chosen_word):
+    st.header("Word of the Day", divider="rainbow")
+    st.title(chosen_word)
+    st.markdown(f'**{compile_data(chosen_word)[favored].type_of_speech}**')
 
 
-# def list_photo_names(folder_path):
-#     return [file for file in os.listdir(folder_path) if
-#             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
-#
-# def list_of_prev_wotd_cleaner(clean_text):
-#     print(clean_text)
-#     clean_text = str(clean_text)
-#     clean_text = re.sub(r'.jpg', '', clean_text)
-#     clean_text = re.sub(r'.jpeg', '', clean_text)
-#     clean_text = re.sub(r'.png', '', clean_text)
-#     clean_text = re.sub(r'.gif', '', clean_text)
-#     clean_text = re.sub(r'.webp', '', clean_text)
-#     clean_text = re.sub(r'.avif', '', clean_text)
-#     clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-#     clean_text = re.sub(r"]", '', clean_text)
-#     clean_text = re.sub(r"'", '', clean_text)
-#     clean_text = re.sub(r"2", '', clean_text)
-#     clean_text = clean_text.lower()
-#     clean_list = clean_text.split(", ")
-#     clean_list.sort(key=str.lower)
-#     print(clean_list)
-#     print('')
-#     print(len(clean_list))
-#     return clean_list
-#
-#
-# # Example usage
-#
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
-#
-# def all_words(word):
-#     for t in (previous_WOTD):
-#         save_to_file(t)
-#
-#
-# all_words(previous_WOTD)
-file_name = "Former Words of the day"
+# Text to List Converter
+def format_text(text):
+    text = text.split('^')
+    return text
 
-def adding_a_new_word():
-    new_word = input("What's the word for today? ")
-    adding_a_new_word_to_list(new_word)
-    return new_word
+def check_for_no_data(text):
+    if text != 'No info available':
+        return True
 
-def adding_a_new_word_to_list(new_word):
-    try:
-        if os.path.exists(file_name):
-            with open(file_name, "r") as f:
-                words_list = json.loads(f.read())
-        words_list.append(new_word)
-        with open(file_name, "w") as f:
-            f.write(json.dumps(words_list))
+    else:
+        return False
 
-    except ValueError:
-        messagebox.showerror("Error", "Something went wrong.")
+def display_photo(chosen_word):
+    today_photo = pull_specific_photo(r"Photos", f"{chosen_word}.jpg")
+    st.image(today_photo)
 
-    return words_list
+def first_definition():
+    formated_definition = format_text(list_of_word_variants[favored].definition)
+    for t in range(len(formated_definition)):
+        st.write(
+            f'{formated_definition[t]}')
+    # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
+    # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
 
-new_word = adding_a_new_word()
+def more_definitions(chosen_word):
+    for t in range(num - 1):
+        if check_for_no_data(list_of_word_variants[t].definition):
+            pass
+
+        st.header(chosen_word, divider="rainbow")
+        st.markdown(
+            f'{format_text(list_of_word_variants[t + 1].definition)}')
+        st.markdown(
+            f'**{list_of_word_variants[t + 1].type_of_speech}**')
+        st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
+        st.markdown(
+            f'Date first used: {list_of_word_variants[t + 1].date}')
+        if check_for_no_data(list_of_word_variants[t + 1].synonyms):
+            st.markdown("Synonyms:")
+            st.markdown(list_of_word_variants[t + 1].synonyms)
+            st.markdown("Antonyms:")
+            st.markdown(list_of_word_variants[t + 1].antonyms)
+        # st.markdown(f'Antonyms: None found')
+
+def display_instructions():
+    st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
+    st.sidebar.markdown(
+        'Safari Instructions: [Here](https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)')
+    st.sidebar.markdown(
+        'Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
+
+def pull_specific_photo(folder_path, photo_name):
+    # Default case (equivalent to else)
+    photo_path = os.path.join(folder_path, photo_name)
+    if os.path.exists(photo_path):
+        return Image.open(photo_path)
+    else:
+        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
+
+def sidebar(chosen_word):
+    st.sidebar.title(chosen_word)
+    st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+
+    if check_for_no_data(list_of_word_variants[favored].etymology):
+        if st.sidebar.button("Etymology"):
+            for t in range(num):
+                st.sidebar.markdown(list_of_word_variants[t].etymology)
+    else:
+        pass
+
+    if check_for_no_data(list_of_word_variants[favored].synonyms):
+        if st.sidebar.button('Thesaurus'):
+            st.sidebar.markdown("Synonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+            st.sidebar.markdown("Antonyms:")
+            st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+        else:
+            pass
+    url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
+    st.sidebar.link_button("Merriam-Webster", url)
+
+    if st.sidebar.button("Instructions to add WOTD to your homescreen"):
+        display_instructions()
+
+
+
+def guide_func(chosen_word):
+    top_of_page(chosen_word)
+    first_definition()
+    sidebar(chosen_word)
+    if num > 1:
+        if check_for_no_data(list_of_word_variants[1].definition):
+            if st.button("All Definitions"):
+                more_definitions()
+        else:
+            pass
+def new_word():
+    if st.sidebar.button('Previous words of the day.'):
+        for t in range(len(previous_WOTD)):
+            if st.sidebar.button(previous_WOTD[t]):
+                guide_func(t)
+
+
+if __name__ == "__main__":
+    guide_func()
+    display_photo()
+    new_word()
