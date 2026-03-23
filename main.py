@@ -60,24 +60,18 @@ def main():
                 f'{formated_definition[t]}')
 
     def more_definitions(chosen_word, variant):
-        for t in range(num - 1):
+        for t in range(1, len(variant)):  # Start from 1 to avoid accessing index 0
             if check_for_no_data(variant[t].definition):
-                pass
-
-            st.header(chosen_word, divider="rainbow")
-            st.markdown(
-                f'{format_text(variant[t + 1].definition)}')
-            st.markdown(
-                f'**{variant[t + 1].type_of_speech}**')
-            st.markdown(f'Etymology: {format_text(variant[t + 1].etymology)}')
-            st.markdown(
-                f'Date first used: {variant[t + 1].date}')
-            if check_for_no_data(variant[t + 1].synonyms):
-                st.markdown("Synonyms:")
-                st.markdown(variant[t + 1].synonyms)
-                st.markdown("Antonyms:")
-                st.markdown(variant[t + 1].antonyms)
-            # st.markdown(f'Antonyms: None found')
+                st.header(chosen_word, divider="rainbow")
+                st.markdown(f'{format_text(variant[t].definition)}')
+                st.markdown(f'**{variant[t].type_of_speech}**')
+                st.markdown(f'Etymology: {format_text(variant[t].etymology)}')
+                st.markdown(f'Date first used: {variant[t].date}')
+                if check_for_no_data(variant[t].synonyms):
+                    st.markdown("Synonyms:")
+                    st.markdown(variant[t].synonyms)
+                    st.markdown("Antonyms:")
+                    st.markdown(variant[t].antonyms)
 
     def display_instructions():
         st.sidebar.markdown('Instructions on how to make WOTD into a widget on your homescreen.')
@@ -127,10 +121,6 @@ def main():
                 test = 2
                 guide_func(previous_WOTD[t])
     guide_func(WORD)
-
-
-
-
 
 if __name__ == "__main__":
     main()
