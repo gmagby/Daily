@@ -15,7 +15,6 @@ def main():
 
     favored = 0
     num = len(base_list_of_word_variants)
-    test = 0
 
     def guide_func(chosen_word):
         chosen_word = chosen_word
@@ -23,11 +22,12 @@ def main():
 
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
+        new_word()
 
         if num > 1:
             if check_for_no_data(new_word_variants_list[1].definition):
                 if st.button("All Definitions"):
-                    more_definitions(chosen_word)
+                    more_definitions(chosen_word, new_word_variants_list)
             else:
                 pass
 
@@ -125,12 +125,9 @@ def main():
         for t in range(len(previous_WOTD)):
             if st.sidebar.button(previous_WOTD[t]):
                 test = 2
-                return previous_WOTD(t)
-    new = new_word()
-    if test == 0:
-        guide_func(WORD)
-    if test == 2:
-        guide_func(new)
+                guide_func(previous_WOTD[t])
+    guide_func(WORD)
+
 
 
 
