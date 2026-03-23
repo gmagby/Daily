@@ -121,7 +121,7 @@ def main():
 
     def new_word(word, number):
         if number == 0:
-            guide_func(WORD)
+            guide_func(word)
         if number == 1:
             guide_func(word)
 
