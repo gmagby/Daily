@@ -119,7 +119,9 @@ def main():
         for word in previous_WOTD:
             if st.sidebar.button(word):
                 guide_func(word)  # Call guide_func with the selected previous word
-    guide_func(WORD)
+            else:
+                guide_func(WORD)
+    new_word()
 
 if __name__ == "__main__":
     main()
