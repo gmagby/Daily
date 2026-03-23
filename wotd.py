@@ -155,7 +155,8 @@ def extract_synonyms(data, nyms):
     return synonyms
 
 class WordVariant:
-    def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
+    def __init__(self,word, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
+        self.word = word
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
@@ -163,11 +164,11 @@ class WordVariant:
         self.synonyms = synonyms
         self.antonyms = antonyms
 
-def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
+def create_word_variants(word, definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
     return [
-        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
-        for definition, type_of_speech, date, etymology, synonyms, antonyms in
-        zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
+        WordVariant(word, definition, type_of_speech, date, etymology, synonyms, antonyms)
+        for word, definition, type_of_speech, date, etymology, synonyms, antonyms in
+        zip(word,definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
 
 def create_variants(word_selected):
@@ -181,7 +182,7 @@ def create_variants(word_selected):
         NONE_RESULT]
     antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
         NONE_RESULT]
-    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
+    variants = create_word_variants(word_selected,definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
 

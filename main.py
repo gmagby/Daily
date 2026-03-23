@@ -3,24 +3,38 @@ from wotd import previous_WOTD
 from wotd import WORD
 from PIL import Image
 from wotd import create_variants
+
 import os
 
 def main():
-    def compile_data(chosen_word):
+    def create_new_variants(chosen_word):
         list_of_word_variants= create_variants(chosen_word)
         return list_of_word_variants
 
-    list_of_word_variants = compile_data(WORD)
+    base_list_of_word_variants = create_new_variants(WORD)
 
     favored = 0
-    num = len(list_of_word_variants)
+    num = len(base_list_of_word_variants)
     test = 0
 
+    def guide_func(chosen_word):
+        chosen_word = chosen_word
+        new_word_variants_list = create_new_variants(chosen_word)
 
-    def top_of_page(chosen_word):
+        top_of_page(chosen_word, new_word_variants_list)
+        first_definition(chosen_word, new_word_variants_list)
+
+        if num > 1:
+            if check_for_no_data(new_word_variants_list[1].definition):
+                if st.button("All Definitions"):
+                    more_definitions(chosen_word)
+            else:
+                pass
+
+    def top_of_page(chosen_word, variant):
         st.header("Word of the Day", divider="rainbow")
         st.title(chosen_word)
-        st.markdown(f'**{compile_data(chosen_word)[favored].type_of_speech}**')
+        st.markdown(f'**{variant[favored].type_of_speech}**')
 
 
     # Text to List Converter
@@ -39,32 +53,30 @@ def main():
         today_photo = pull_specific_photo(r"Photos", f"{chosen_word}.jpg")
         st.image(today_photo)
 
-    def first_definition(chosen_word):
-        formated_definition = format_text(list_of_word_variants[favored].definition)
+    def first_definition(chosen_word, variant):
+        formated_definition = format_text(variant[favored].definition)
         for t in range(len(formated_definition)):
             st.write(
                 f'{formated_definition[t]}')
-        # st.markdown(f'Synonyms: {list_of_word_variants[0].synonyms}')
-        # st.markdown(f'Antonyms: {list_of_word_variants[0].antonyms}')
 
-    def more_definitions(chosen_word):
+    def more_definitions(chosen_word, variant):
         for t in range(num - 1):
-            if check_for_no_data(list_of_word_variants[t].definition):
+            if check_for_no_data(variant[t].definition):
                 pass
 
             st.header(chosen_word, divider="rainbow")
             st.markdown(
-                f'{format_text(list_of_word_variants[t + 1].definition)}')
+                f'{format_text(variant[t + 1].definition)}')
             st.markdown(
-                f'**{list_of_word_variants[t + 1].type_of_speech}**')
-            st.markdown(f'Etymology: {format_text(list_of_word_variants[t + 1].etymology)}')
+                f'**{variant[t + 1].type_of_speech}**')
+            st.markdown(f'Etymology: {format_text(variant[t + 1].etymology)}')
             st.markdown(
-                f'Date first used: {list_of_word_variants[t + 1].date}')
-            if check_for_no_data(list_of_word_variants[t + 1].synonyms):
+                f'Date first used: {variant[t + 1].date}')
+            if check_for_no_data(variant[t + 1].synonyms):
                 st.markdown("Synonyms:")
-                st.markdown(list_of_word_variants[t + 1].synonyms)
+                st.markdown(variant[t + 1].synonyms)
                 st.markdown("Antonyms:")
-                st.markdown(list_of_word_variants[t + 1].antonyms)
+                st.markdown(variant[t + 1].antonyms)
             # st.markdown(f'Antonyms: None found')
 
     def display_instructions():
@@ -83,23 +95,23 @@ def main():
             raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
 
-    def sidebar(chosen_word):
+    def sidebar(chosen_word, variant):
         st.sidebar.title(chosen_word)
-        st.sidebar.markdown(f'**{list_of_word_variants[favored].type_of_speech}**')
+        st.sidebar.markdown(f'**{variant[favored].type_of_speech}**')
 
-        if check_for_no_data(list_of_word_variants[favored].etymology):
+        if check_for_no_data(variant[favored].etymology):
             if st.sidebar.button("Etymology"):
                 for t in range(num):
-                    st.sidebar.markdown(list_of_word_variants[t].etymology)
+                    st.sidebar.markdown(variant[t].etymology)
         else:
             pass
 
-        if check_for_no_data(list_of_word_variants[favored].synonyms):
+        if check_for_no_data(variant[favored].synonyms):
             if st.sidebar.button('Thesaurus'):
                 st.sidebar.markdown("Synonyms:")
-                st.sidebar.markdown(list_of_word_variants[favored].synonyms)
+                st.sidebar.markdown(variant[favored].synonyms)
                 st.sidebar.markdown("Antonyms:")
-                st.sidebar.markdown(list_of_word_variants[favored].antonyms)
+                st.sidebar.markdown(variant[favored].antonyms)
             else:
                 pass
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
@@ -108,26 +120,18 @@ def main():
         if st.sidebar.button("Instructions to add WOTD to your homescreen"):
             display_instructions()
 
-
-
-    def guide_func(chosen_word):
-        top_of_page(chosen_word)
-        first_definition(chosen_word)
-        # sidebar(chosen_word)
-        if num > 1:
-            if check_for_no_data(list_of_word_variants[1].definition):
-                if st.button("All Definitions"):
-                    more_definitions(chosen_word)
-            else:
-                pass
-        display_photo(WORD)
     def new_word():
         # if st.sidebar.button('Previous words of the day.'):
         for t in range(len(previous_WOTD)):
             if st.sidebar.button(previous_WOTD[t]):
-                return t
-    guide_func(WORD)
-    new_word()
+                test = 2
+                return previous_WOTD(t)
+    new = new_word()
+    if test == 0:
+        guide_func(WORD)
+    if test == 2:
+        guide_func(new)
+
 
 
 
