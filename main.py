@@ -116,9 +116,9 @@ def main():
 
     def new_word():
         # if st.sidebar.button('Previous words of the day.'):
-        for t in previous_WOTD:
-            if st.sidebar.button(previous_WOTD[t]):
-                guide_func(previous_WOTD[t])
+        for option in previous_WOTD:
+            if st.sidebar.button(option):
+                guide_func(option)
             else:
                 guide_func(WORD)
     new_word()
