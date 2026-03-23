@@ -11,17 +11,17 @@ def main():
         list_of_word_variants= create_variants(chosen_word)
         return list_of_word_variants
 
-    base_list_of_word_variants = create_new_variants(WORD)
-
     favored = 0
-    num = len(base_list_of_word_variants)
 
     def guide_func(chosen_word):
-        chosen_word = chosen_word
         new_word_variants_list = create_new_variants(chosen_word)
+        num = len(new_word_variants_list)
+
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
         buttons()
+        sidebar(chosen_word, new_word_variants_list)
+        display_photo(chosen_word)
 
         if num > 1:
             if check_for_no_data(new_word_variants_list[1].definition):
@@ -94,7 +94,7 @@ def main():
 
         if check_for_no_data(variant[favored].etymology):
             if st.sidebar.button("Etymology"):
-                for t in range(num):
+                for t in range(len(variant[favored].etymology)):
                     st.sidebar.markdown(variant[t].etymology)
         else:
             pass
