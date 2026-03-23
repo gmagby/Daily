@@ -115,11 +115,10 @@ def main():
             display_instructions()
 
     def new_word():
-        # if st.sidebar.button('Previous words of the day.'):
-        for t in range(len(previous_WOTD)):
-            if st.sidebar.button(previous_WOTD[t]):
-                test = 2
-                guide_func(previous_WOTD[t])
+        st.sidebar.header("Previous Words of the Day")
+        for word in previous_WOTD:
+            if st.sidebar.button(word):
+                guide_func(word)  # Call guide_func with the selected previous word
     guide_func(WORD)
 
 if __name__ == "__main__":
