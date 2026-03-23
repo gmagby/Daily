@@ -124,7 +124,7 @@ def main():
         if number == 1:
             guide_func(buttons())
 
-    new_word()
+    guide_func(WORD)
 
 if __name__ == "__main__":
     main()
