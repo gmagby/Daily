@@ -21,6 +21,7 @@ def main():
         new_word_variants_list = create_new_variants(chosen_word)
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
+        buttons()
 
         if num > 1:
             if check_for_no_data(new_word_variants_list[1].definition):
