@@ -22,7 +22,6 @@ def main():
 
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
-        new_word()
 
         if num > 1:
             if check_for_no_data(new_word_variants_list[1].definition):
