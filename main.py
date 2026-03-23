@@ -19,7 +19,6 @@ def main():
     def guide_func(chosen_word):
         chosen_word = chosen_word
         new_word_variants_list = create_new_variants(chosen_word)
-
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
 
@@ -120,6 +119,8 @@ def main():
                 guide_func(option)
             else:
                 guide_func(WORD)
+                if guide_func(WORD):
+                    pass
     new_word()
 
 if __name__ == "__main__":
