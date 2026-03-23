@@ -3,7 +3,6 @@ from wotd import previous_WOTD
 from wotd import WORD
 from PIL import Image
 from wotd import create_variants
-
 import os
 
 def main():
@@ -15,18 +14,20 @@ def main():
 
     def guide_func(chosen_word):
         new_word_variants_list = create_new_variants(chosen_word)
-        num = len(new_word_variants_list)
 
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
-        buttons()
+        verify_more_definitions(chosen_word, new_word_variants_list)
         sidebar(chosen_word, new_word_variants_list)
         display_photo(chosen_word)
+        buttons()
 
+    def verify_more_definitions(chosen_word, variant):
+        num = len(variant)
         if num > 1:
-            if check_for_no_data(new_word_variants_list[1].definition):
+            if check_for_no_data(variant[1].definition):
                 if st.button("All Definitions"):
-                    more_definitions(chosen_word, new_word_variants_list)
+                    more_definitions(chosen_word, variant)
             else:
                 pass
 
