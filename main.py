@@ -1,3 +1,5 @@
+from tkinter import IntVar
+
 import streamlit as st
 from wotd import previous_WOTD
 from wotd import WORD
@@ -14,7 +16,6 @@ def main():
 
     def guide_func(chosen_word):
         new_word_variants_list = create_new_variants(chosen_word)
-
         top_of_page(chosen_word, new_word_variants_list)
         first_definition(chosen_word, new_word_variants_list)
         verify_more_definitions(chosen_word, new_word_variants_list)
@@ -118,15 +119,26 @@ def main():
         if st.sidebar.button('Previous words of the day.'):
             for t in previous_WOTD:
                 if st.sidebar.button(t):
-                    new_word(t, 1)
+                    initialize_selected_word()
+                    print(t)
 
-    def new_word(word, number):
-        if number == 0:
-            guide_func(word)
-        if number == 1:
-            guide_func(word)
+    selected_option = IntVar()
 
-    new_word(WORD, 0)
+    def initialize_word():
+        selected_option.set(1)
+        selection()
+
+    def initialize_selected_word():
+        selected_option.set(2)
+        selection()
+
+    def selection(chosen_word):
+        if selected_option.get() == 1:
+            guide_func(WORD)
+        elif selected_option.get() == 2:
+            guide_func(chosen_word)
+    initialize_word()
+
 
 if __name__ == "__main__":
     main()
