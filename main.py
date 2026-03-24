@@ -4,7 +4,6 @@ from wotd import WORD
 from PIL import Image
 from wotd import create_variants
 import os
-from tkinter import IntVar
 
 def main():
     def create_new_variants(chosen_word):
