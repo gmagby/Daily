@@ -126,11 +126,11 @@ def main():
 
     def initialize_word():
         selected_option.set(1)
-        selection()
+        selection(WORD)
 
-    def initialize_selected_word():
+    def initialize_selected_word(chosen_word):
         selected_option.set(2)
-        selection()
+        selection(chosen_word)
 
     def selection(chosen_word):
         if selected_option.get() == 1:
