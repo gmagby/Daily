@@ -120,7 +120,7 @@ def main():
                     initialize_selected_word()
                     print(t)
 
-    selected_option = IntVar()
+    selected_option = st.button
 
     def initialize_word():
         selected_option.set(1)
