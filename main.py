@@ -116,7 +116,7 @@ def main():
     def buttons():
         if st.sidebar.button('Previous words of the day.'):
             for t in previous_WOTD:
-                if st.sidebar.button(t):
+                while st.sidebar.button(t):
                     selection(t, 1)
                     st.sidebar.markdown('t')
 
