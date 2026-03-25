@@ -125,7 +125,7 @@ def main():
             guide_func(WORD)
         elif selected_option == 1:
             guide_func(chosen_word)
-    selection()
+    selection(WORD, 0)
 
 
 if __name__ == "__main__":
