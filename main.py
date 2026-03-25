@@ -116,7 +116,7 @@ def main():
     def buttons():
         if st.sidebar.button('Previous words of the day.'):
             for t in previous_WOTD:
-                while st.sidebar.button(t):
+                if st.sidebar.button(t):
                     selection(t, 1)
                     st.sidebar.markdown('t')
 
@@ -126,7 +126,7 @@ def main():
         elif selected_option == 1:
             guide_func(chosen_word)
     selection(WORD, 0)
+main()
 
-
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
