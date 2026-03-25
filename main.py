@@ -117,25 +117,17 @@ def main():
         if st.sidebar.button('Previous words of the day.'):
             for t in previous_WOTD:
                 if st.sidebar.button(t):
-                    initialize_selected_word()
+                    selected_option == 1
                     print(t)
 
-    selected_option = st.button
-
-    def initialize_word():
-        selected_option.set(1)
-        selection(WORD)
-
-    def initialize_selected_word(chosen_word):
-        selected_option.set(2)
-        selection(chosen_word)
+    selected_option = 0
 
     def selection(chosen_word):
-        if selected_option.get() == 1:
+        if selected_option == 0:
             guide_func(WORD)
-        elif selected_option.get() == 2:
+        elif selected_option == 1:
             guide_func(chosen_word)
-    initialize_word()
+
 
 
 if __name__ == "__main__":
