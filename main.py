@@ -107,6 +107,7 @@ def sidebar(chosen_word, variant):
             st.sidebar.markdown(variant[favored].antonyms)
         else:
             pass
+
     url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
     st.sidebar.link_button("Merriam-Webster", url)
 
@@ -125,8 +126,11 @@ def selection(chosen_word, selected_option):
         guide_func(WORD)
     elif selected_option == 1:
         guide_func(chosen_word)
-selection(WORD, 0)
+
+
+
+
 
 
 if __name__ == "__main__":
-    guide_func(WORD)
+    selection(WORD, 0)
