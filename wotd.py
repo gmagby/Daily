@@ -33,10 +33,10 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def save_to_file(chosen_word, data):
-    file_name = f'{chosen_word}.txt'
+def save_to_file():
     folder_path = 'txt_files'
     for t in previous_WOTD:
+        data = get_data(previous_WOTD)
         file_name = f'{t}.txt'
         try:
             folder_path = os.path.join(folder_path, file_name)
@@ -185,9 +185,6 @@ def create_variants(word_selected):
     variants = create_word_variants(word_selected,definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
-
-
-
 # Text to List Converter
 def format_text(text):
     return text.split('^')
@@ -238,3 +235,4 @@ def list_of_prev_wotd_cleaner(clean_text):
 # Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
+save_to_file()

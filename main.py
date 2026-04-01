@@ -29,6 +29,8 @@ def verify_more_definitions(chosen_word, variant):
                 more_definitions(chosen_word, variant)
         else:
             pass
+    else:
+        pass
 
 def top_of_page(chosen_word, variant):
     st.header("Word of the Day", divider="rainbow")
@@ -133,4 +135,4 @@ def selection(chosen_word, selected_option):
 
 
 if __name__ == "__main__":
-    selection(WORD, 0)
+    guide_func()
