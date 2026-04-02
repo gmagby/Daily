@@ -120,7 +120,7 @@ def buttons():
     if st.sidebar.button('Previous words of the day.'):
         for t in previous_WOTD:
             if st.sidebar.button(t):
-                selection(t, 1)
+                selection(1, t)
                 st.sidebar.markdown('t')
 
 def selection(selected_option, chosen_word=None):
@@ -130,4 +130,4 @@ def selection(selected_option, chosen_word=None):
         guide_func(chosen_word)
 
 
-selection(WORD, 0)
+selection(0, WORD)

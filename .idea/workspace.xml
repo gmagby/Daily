@@ -75,7 +75,7 @@
       <recent name="C:\Users\gabem\PythonProject\PythonProject\Photos" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.wotd">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Save_words" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
@@ -166,8 +166,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.wotd" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.wotd" />
         <item itemvalue="Python.scratch" />
         <item itemvalue="Python.Save_words" />
       </list>
