@@ -1,11 +1,10 @@
 import json
-import pickle
 import re
 import requests
 import os
 
-WORD = 'savant'
-other_word = 'aver'
+WORD = 'perspicacious'
+chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -17,7 +16,8 @@ ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
-
+PHOTO_FOLDER = r"Photos"
+TXT_FOLDER = 'txt_files'
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -38,10 +38,8 @@ def create_file(chosen_word):
     file_name = f'{chosen_word}.txt'
     try:
         folder_path = os.path.join(folder, file_name)
-        if os.path.exists(folder_path):
-            save_to_file(file_name, get_data(chosen_word))
-        else:
-            pass
+        if os.path.exists(file_name):
+            save_to_file(folder_path, get_data(chosen_word))
     except ValueError:
         print("Error", "Something went wrong.")
 
@@ -159,8 +157,7 @@ def extract_synonyms(data, nyms):
     return synonyms
 
 class WordVariant:
-    def __init__(self,word, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
-        self.word = word
+    def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
@@ -168,16 +165,16 @@ class WordVariant:
         self.synonyms = synonyms
         self.antonyms = antonyms
 
-def create_word_variants(word, definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
+def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
     return [
-        WordVariant(word, definition, type_of_speech, date, etymology, synonyms, antonyms)
-        for word, definition, type_of_speech, date, etymology, synonyms, antonyms in
-        zip(word,definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
+        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
+        for definition, type_of_speech, date, etymology, synonyms, antonyms in
+        zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
 
 def create_variants(word_selected):
-    data = read_data(word_selected)
-    thes_data = read_data(word_selected)
+    data = get_data(word_selected)
+    thes_data = get_thes_data(word_selected)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -186,29 +183,30 @@ def create_variants(word_selected):
         NONE_RESULT]
     antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
         NONE_RESULT]
-    variants = create_word_variants(word_selected,definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
+    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
+list_of_word_variants = create_variants(WORD)
 # Text to List Converter
 def format_text(text):
     return text.split('^')
 
-# formated_definition = format_text(list_of_word_variants[0].definition)
-#
-# def first_definition():
-#     print("Formated Text:")
-#     for t in range(len(formated_definition)):
-#         print(formated_definition[t])
-#     print(f'Date first used: {list_of_word_variants[0].date}')
-#     print(" ")
-#     print(f'Amount of items in Format: ' + str(len(formated_definition)))
-#     print(f'Number of variants: ' + str(len(list_of_word_variants)))
-#     print(" ")
-#     print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
-#     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
-#     print('')
-#
-# first_definition()
+formated_definition = format_text(list_of_word_variants[0].definition)
+
+def first_definition():
+    print("Formated Text:")
+    for t in range(len(formated_definition)):
+        print(formated_definition[t])
+    print(f'Date first used: {list_of_word_variants[0].date}')
+    print(" ")
+    print(f'Amount of items in Format: ' + str(len(formated_definition)))
+    print(f'Number of variants: ' + str(len(list_of_word_variants)))
+    print(" ")
+    print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
+    print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
+    print('')
+
+first_definition()
 
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
