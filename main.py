@@ -135,4 +135,4 @@ def selection(chosen_word, selected_option):
 
 
 if __name__ == "__main__":
-    guide_func()
+    guide_func(WORD)

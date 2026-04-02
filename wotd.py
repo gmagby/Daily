@@ -33,19 +33,23 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def save_to_file():
-    folder_path = 'txt_files'
-    for t in previous_WOTD:
-        data = get_data(previous_WOTD)
-        file_name = f'{t}.txt'
-        try:
-            folder_path = os.path.join(folder_path, file_name)
-            if os.path.exists(file_name):
-                with open(file_name, "w") as f:
-                    f.write(json.dumps(data))
+def create_file(chosen_word):
+    folder = 'txt_files'
+    file_name = f'{chosen_word}.txt'
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(folder_path):
+            save_to_file(file_name, get_data(chosen_word))
+        else:
+            pass
+    except ValueError:
+        print("Error", "Something went wrong.")
 
-        except ValueError:
-            print("Error", "Something went wrong.")
+
+def save_to_file(file_name, data):
+    with open(file_name, "w") as f:
+        f.write(json.dumps(data))
+
 
 def read_data(chosen_word):
     file_name = f'{chosen_word}.txt'
@@ -235,4 +239,4 @@ def list_of_prev_wotd_cleaner(clean_text):
 # Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-save_to_file()
+save_to_file(WORD, get_data(WORD))
