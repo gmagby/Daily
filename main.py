@@ -107,8 +107,8 @@ def sidebar(chosen_word, variant):
             st.sidebar.markdown(variant[favored].synonyms)
             st.sidebar.markdown("Antonyms:")
             st.sidebar.markdown(variant[favored].antonyms)
-        else:
-            pass
+    else:
+        pass
 
     url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
     st.sidebar.link_button("Merriam-Webster", url)
