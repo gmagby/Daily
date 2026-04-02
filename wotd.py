@@ -4,7 +4,7 @@ import re
 import requests
 import os
 
-WORD = 'brinkmanship'
+WORD = 'savant'
 other_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
@@ -239,4 +239,9 @@ def list_of_prev_wotd_cleaner(clean_text):
 # Example usage
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-save_to_file(WORD, get_data(WORD))
+for t in previous_WOTD:
+    create_file(t)
+
+
+if __name__ == "__main__":
+    create_file(WORD)
