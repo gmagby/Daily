@@ -123,12 +123,11 @@ def buttons():
                 selection(t, 1)
                 st.sidebar.markdown('t')
 
-def selection(chosen_word, selected_option):
+def selection(selected_option, chosen_word=None):
     while selected_option == 0:
         guide_func(WORD)
     else:
         guide_func(chosen_word)
-
 
 
 selection(WORD, 0)
