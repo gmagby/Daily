@@ -33,34 +33,6 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-def create_file(chosen_word):
-    folder = 'txt_files'
-    file_name = f'{chosen_word}.txt'
-    try:
-        folder_path = os.path.join(folder, file_name)
-        if os.path.exists(file_name):
-            save_to_file(folder_path, get_data(chosen_word))
-    except ValueError:
-        print("Error", "Something went wrong.")
-
-
-def save_to_file(file_name, data):
-    with open(file_name, "w") as f:
-        f.write(json.dumps(data))
-
-
-def read_data(chosen_word):
-    file_name = f'{chosen_word}.txt'
-    folder_path = 'txt_files'
-    try:
-        folder_path = os.path.join(folder_path, file_name)
-        if os.path.exists(folder_path):
-            with open(folder_path, "r") as f:
-                data = json.loads(f.read())
-                return data
-
-    except ValueError:
-       print("Error", "Something went wrong.")
 
 def cleaner(clean_text, sharp=None):
     print(clean_text)
@@ -155,6 +127,36 @@ def extract_synonyms(data, nyms):
         except (KeyError, TypeError):
             synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
+
+
+def create_file(chosen_word):
+    folder = 'txt_files'
+    file_name = f'{chosen_word}.txt'
+    try:
+        folder_path = os.path.join(folder, file_name)
+        if os.path.exists(file_name):
+            save_to_file(folder_path, get_data(chosen_word))
+    except ValueError:
+        print("Error", "Something went wrong.")
+
+
+def save_to_file(file_name, data):
+    with open(file_name, "w") as f:
+        f.write(json.dumps(data))
+
+
+def read_data(chosen_word):
+    file_name = f'{chosen_word}.txt'
+    folder_path = 'txt_files'
+    try:
+        folder_path = os.path.join(folder_path, file_name)
+        if os.path.exists(folder_path):
+            with open(folder_path, "r") as f:
+                data = json.loads(f.read())
+                return data
+
+    except ValueError:
+       print("Error", "Something went wrong.")
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
