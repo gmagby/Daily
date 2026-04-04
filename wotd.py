@@ -173,8 +173,8 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = get_data(word_selected)
-    thes_data = get_thes_data(word_selected)
+    data = read_data(word_selected)
+    thes_data = read_data(word_selected)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -187,6 +187,7 @@ def create_variants(word_selected):
     return variants
 
 list_of_word_variants = create_variants(WORD)
+
 # Text to List Converter
 def format_text(text):
     return text.split('^')
@@ -243,3 +244,4 @@ for t in previous_WOTD:
 
 if __name__ == "__main__":
     create_file(WORD)
+
