@@ -18,7 +18,7 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 PHOTO_FOLDER = r"Photos"
 TXT_FOLDER = 'txt_files'
-THESAURUS_FOLDER = 'Thesaurus'
+THESAURUS_FOLDER = r'Thesaurus'
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
