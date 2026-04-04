@@ -19,7 +19,7 @@ def guide_func(chosen_word):
     verify_more_definitions(chosen_word, new_word_variants_list)
     sidebar(chosen_word, new_word_variants_list)
     display_photo(chosen_word)
-    buttons()
+
 
 def verify_more_definitions(chosen_word, variant):
     num = len(variant)
@@ -119,11 +119,14 @@ def sidebar(chosen_word, variant):
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
 
-def buttons():
-    if st.sidebar.button('Previous words of the day.'):
-        for t in previous_WOTD:
-            if st.sidebar.button(t):
-                st.sidebar.markdown('t')
+    def buttons():
+        if st.sidebar.button('Previous words of the day.'):
+            for t in previous_WOTD:
+                if st.sidebar.button(t):
+                    st.sidebar.markdown('t')
+    buttons()
+
+
 
 
 
