@@ -129,8 +129,7 @@ def extract_synonyms(data, nyms):
     return synonyms
 
 
-def create_file(chosen_word):
-    folder = 'txt_files'
+def create_file(chosen_word, folder):
     file_name = f'{chosen_word}.txt'
     try:
         folder_path = os.path.join(folder, file_name)
@@ -188,15 +187,15 @@ def create_variants(word_selected):
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
-list_of_word_variants = create_variants(WORD)
+
 
 # Text to List Converter
 def format_text(text):
     return text.split('^')
 
-formated_definition = format_text(list_of_word_variants[0].definition)
-
 def first_definition():
+    list_of_word_variants = create_variants(WORD)
+    formated_definition = format_text(list_of_word_variants[0].definition)
     print("Formated Text:")
     for t in range(len(formated_definition)):
         print(formated_definition[t])
@@ -208,8 +207,6 @@ def first_definition():
     print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
     print('')
-
-first_definition()
 
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
@@ -241,9 +238,9 @@ def list_of_prev_wotd_cleaner(clean_text):
 photo_folder = r"Photos"
 previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
 for t in previous_WOTD:
-    create_file(t)
+    create_file(t, TXT_FOLDER)
 
 
 if __name__ == "__main__":
-    create_file(WORD)
+    create_file(WORD, TXT_FOLDER)
 
