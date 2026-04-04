@@ -114,18 +114,18 @@ def sidebar(chosen_word, variant):
         url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
         return url
 
-    def create_merriam_button(chosen_word):
-        button = st.sidebar.link_button(f'{chosen_word}', create_merriam_url(WORD))
+    def create_merriam_button(text, chosen_word):
+        button = st.sidebar.link_button(f'{text}', create_merriam_url(chosen_word))
         return button
 
-    create_merriam_button(WORD)
+    create_merriam_button('Merriam-Webster', WORD)
 
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
 
     if st.sidebar.button('Previous words of the day.'):
         for t in previous_WOTD:
-            create_merriam_button(t)
+            create_merriam_button(t, t)
 
 
 
