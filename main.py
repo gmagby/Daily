@@ -126,6 +126,5 @@ def sidebar(chosen_word, variant):
     if st.sidebar.button('Previous words of the day.'):
         for t in previous_WOTD:
             create_merriam_button(t, t)
-            guide_func(t)
 
 guide_func(WORD)
