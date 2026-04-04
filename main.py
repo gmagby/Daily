@@ -128,6 +128,6 @@ def sidebar(chosen_word, variant):
         for t in previous_WOTD:
             y = create_merriam_button(t, t)
             if y:
-                display_photo(t)
+                st.sidebar.image(display_photo(t))
 
 guide_func(WORD)
