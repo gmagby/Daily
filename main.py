@@ -110,8 +110,11 @@ def sidebar(chosen_word, variant):
     else:
         pass
 
-    url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
-    st.sidebar.link_button("Merriam-Webster", url)
+    def go_to_merriam(chosen_word):
+        url = f'https://www.merriam-webster.com/dictionary/{chosen_word}'
+        return url
+
+    st.sidebar.link_button("Merriam-Webster", go_to_merriam(WORD))
 
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
@@ -122,11 +125,6 @@ def buttons():
             if st.sidebar.button(t):
                 st.sidebar.markdown('t')
 
-def selection(selected_option, chosen_word=None):
-    while selected_option == 0:
-        guide_func(WORD)
-    else:
-        guide_func(chosen_word)
 
 
 guide_func(WORD)
