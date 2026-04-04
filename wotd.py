@@ -18,7 +18,7 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 PHOTO_FOLDER = r"Photos"
 TXT_FOLDER = 'txt_files'
-THESAURUS_FOLDER = "Thesaurus"
+THESAURUS_FOLDER = 'Thesaurus'
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -154,7 +154,6 @@ def create_thes_file(chosen_word, folder):
 def save_to_file(file_name, data):
     with open(file_name, "w") as f:
         f.write(json.dumps(data))
-
 
 def read_data(chosen_word, folder):
     file_name = f'{chosen_word}.txt'
