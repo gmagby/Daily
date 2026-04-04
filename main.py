@@ -96,7 +96,8 @@ def sidebar(chosen_word, variant):
 
     if check_for_no_data(variant[favored].etymology):
         if st.sidebar.button("Etymology"):
-            st.sidebar.markdown(variant[favored].etymology)
+            for t in range(variant):
+                st.sidebar.markdown(variant[favored].etymology)
     else:
         pass
 
