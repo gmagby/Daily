@@ -7,6 +7,7 @@ import os
 
 def create_new_variants(chosen_word):
     list_of_word_variants = create_variants(chosen_word)
+    print(list_of_word_variants)
     return list_of_word_variants
 
 favored = 0
