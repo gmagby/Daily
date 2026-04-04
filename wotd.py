@@ -33,7 +33,6 @@ def get_thes_data(word_selected):
     thes_data = get_response_dictionary(REF_THESAURUS, word_selected, Thesaurus_key)
     return thes_data
 
-
 def cleaner(clean_text, sharp=None):
     print(clean_text)
     clean_text = str(clean_text)
@@ -133,7 +132,9 @@ def create_file(chosen_word, folder):
     file_name = f'{chosen_word}.txt'
     try:
         folder_path = os.path.join(folder, file_name)
-        if os.path.exists(file_name):
+        if os.path.exists(folder_path):
+            pass
+        else:
             save_to_file(folder_path, get_data(chosen_word))
     except ValueError:
         print("Error", "Something went wrong.")
