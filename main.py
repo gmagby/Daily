@@ -118,9 +118,10 @@ def sidebar(chosen_word, variant):
 
     if st.sidebar.button("Instructions to add WOTD to your homescreen"):
         display_instructions()
+
     if st.sidebar.button('Previous words of the day.'):
         for t in previous_WOTD:
-            if st.sidebar.button(t):
+            if st.sidebar.markdown(t):
                 st.sidebar.markdown('t')
 
 
