@@ -18,7 +18,7 @@ def guide_func(chosen_word):
     first_definition(chosen_word, new_word_variants_list)
     verify_more_definitions(chosen_word, new_word_variants_list)
     sidebar(chosen_word, new_word_variants_list)
-    display_photo(chosen_word)
+    st.image(display_photo(chosen_word))
 
 
 def verify_more_definitions(chosen_word, variant):
