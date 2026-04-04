@@ -5,7 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
-      <change afterPath="$PROJECT_DIR$/Photos/format.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Elegiac.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Enigma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Fey.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Indelibly.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Intrigue.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Jingoism.avif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Lethargy.avif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Mandate.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Mite.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Nabob.jpg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Nabob.jpg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Pantograph.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Schema.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Semitic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Semitic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Starboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Vicissitude.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/dialectic.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/epicene.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/genteel.avif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/irascible.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/mire.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/perspicacious.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/sardonic.webp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,22 +231,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00194" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775099131017</created>
-      <option name="number" value="00194" />
-      <option name="presentableId" value="LOCAL-00194" />
-      <option name="project" value="LOCAL" />
-      <updated>1775099131017</updated>
-    </task>
-    <task id="LOCAL-00195" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775099531771</created>
-      <option name="number" value="00195" />
-      <option name="presentableId" value="LOCAL-00195" />
-      <option name="project" value="LOCAL" />
-      <updated>1775099531771</updated>
     </task>
     <task id="LOCAL-00196" summary="Initial">
       <option name="closed" value="true" />
@@ -601,7 +608,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775337811018</updated>
     </task>
-    <option name="localTasksCounter" value="243" />
+    <task id="LOCAL-00243" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775338308706</created>
+      <option name="number" value="00243" />
+      <option name="presentableId" value="LOCAL-00243" />
+      <option name="project" value="LOCAL" />
+      <updated>1775338308706</updated>
+    </task>
+    <task id="LOCAL-00244" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775338366114</created>
+      <option name="number" value="00244" />
+      <option name="presentableId" value="LOCAL-00244" />
+      <option name="project" value="LOCAL" />
+      <updated>1775338366114</updated>
+    </task>
+    <option name="localTasksCounter" value="245" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
