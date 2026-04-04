@@ -120,10 +120,7 @@ def sidebar(chosen_word, variant):
         display_instructions()
 
 
-if st.sidebar.button('Previous words of the day.'):
-    for t in previous_WOTD:
-        if st.sidebar.button(t):
-                st.sidebar.markdown('t')
+
 
 
 
@@ -131,3 +128,7 @@ if st.sidebar.button('Previous words of the day.'):
 
 
 guide_func(WORD)
+if st.sidebar.button('Previous words of the day.'):
+    for t in previous_WOTD:
+        if st.sidebar.button(t):
+                st.sidebar.markdown('t')
