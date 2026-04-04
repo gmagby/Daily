@@ -5,9 +5,8 @@ from PIL import Image
 from wotd import create_variants
 import os
 
-
 def create_new_variants(chosen_word):
-    list_of_word_variants= create_variants(chosen_word)
+    list_of_word_variants = create_variants(chosen_word)
     return list_of_word_variants
 
 favored = 0
@@ -129,4 +128,4 @@ def selection(selected_option, chosen_word=None):
         guide_func(chosen_word)
 
 
-selection(0, WORD)
+guide_func(WORD)
