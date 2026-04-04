@@ -50,9 +50,17 @@ def check_for_no_data(text):
     else:
         return False
 
+def pull_specific_photo(folder_path, photo_name):
+    # Default case (equivalent to else)
+    photo_path = os.path.join(folder_path, photo_name)
+    if os.path.exists(photo_path):
+        return Image.open(photo_path)
+    else:
+        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
+
 def display_photo(chosen_word):
     today_photo = pull_specific_photo(r"Photos", f"{chosen_word}.jpg")
-    st.image(today_photo)
+    return today_photo
 
 def first_definition(chosen_word, variant):
     formated_definition = format_text(variant[favored].definition)
@@ -81,13 +89,6 @@ def display_instructions():
     st.sidebar.markdown(
         'Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
 
-def pull_specific_photo(folder_path, photo_name):
-    # Default case (equivalent to else)
-    photo_path = os.path.join(folder_path, photo_name)
-    if os.path.exists(photo_path):
-        return Image.open(photo_path)
-    else:
-        raise FileNotFoundError(f"The photo '{photo_name}' does not exist in the specified folder.")
 
 
 def sidebar(chosen_word, variant):
