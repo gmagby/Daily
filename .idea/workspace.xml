@@ -5,30 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
-      <change beforePath="$PROJECT_DIR$/Photos/Elegiac.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Enigma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Fey.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Indelibly.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Intrigue.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Jingoism.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Lethargy.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Mandate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Mite.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Nabob.jpg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Nabob.jpg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Pantograph.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Schema.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Semitic.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Semitic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Starboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Vicissitude.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/dialectic.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/epicene.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/genteel.avif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/irascible.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/mire.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/perspicacious.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/sardonic.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Agentic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Agentic.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Decadent.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Decadent.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Mite.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Mite.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/Starboard.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Starboard.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/ameliorate.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/chagrin.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/chagrin.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/concatenate.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/concatenate.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/credulous.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/credulous.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/dialectic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/dialectic.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/epicene.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/epicene.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/mire.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/mire.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/perspicacious.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/perspicacious.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Photos/sardonic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/sardonic.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,30 +221,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00196" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775099603470</created>
-      <option name="number" value="00196" />
-      <option name="presentableId" value="LOCAL-00196" />
-      <option name="project" value="LOCAL" />
-      <updated>1775099603470</updated>
-    </task>
-    <task id="LOCAL-00197" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775099666160</created>
-      <option name="number" value="00197" />
-      <option name="presentableId" value="LOCAL-00197" />
-      <option name="project" value="LOCAL" />
-      <updated>1775099666160</updated>
-    </task>
-    <task id="LOCAL-00198" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775099826640</created>
-      <option name="number" value="00198" />
-      <option name="presentableId" value="LOCAL-00198" />
-      <option name="project" value="LOCAL" />
-      <updated>1775099826640</updated>
     </task>
     <task id="LOCAL-00199" summary="Initial">
       <option name="closed" value="true" />
@@ -624,7 +590,31 @@
       <option name="project" value="LOCAL" />
       <updated>1775338366114</updated>
     </task>
-    <option name="localTasksCounter" value="245" />
+    <task id="LOCAL-00245" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775338566791</created>
+      <option name="number" value="00245" />
+      <option name="presentableId" value="LOCAL-00245" />
+      <option name="project" value="LOCAL" />
+      <updated>1775338566791</updated>
+    </task>
+    <task id="LOCAL-00246" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775338571418</created>
+      <option name="number" value="00246" />
+      <option name="presentableId" value="LOCAL-00246" />
+      <option name="project" value="LOCAL" />
+      <updated>1775338571418</updated>
+    </task>
+    <task id="LOCAL-00247" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775338653835</created>
+      <option name="number" value="00247" />
+      <option name="presentableId" value="LOCAL-00247" />
+      <option name="project" value="LOCAL" />
+      <updated>1775338653835</updated>
+    </task>
+    <option name="localTasksCounter" value="248" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
