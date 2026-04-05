@@ -6,19 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Agentic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Agentic.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Decadent.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Decadent.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Mite.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Mite.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/Starboard.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/Starboard.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/ameliorate.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/chagrin.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/chagrin.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/concatenate.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/concatenate.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/credulous.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/credulous.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/dialectic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/dialectic.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/epicene.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/epicene.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/mire.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/mire.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/perspicacious.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/perspicacious.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Photos/sardonic.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Photos/sardonic.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/format.py" beforeDir="false" afterPath="$PROJECT_DIR$/format.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,25 +44,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.Save_words.executor": "Run",
-    "Python.daily_mailer.executor": "Run",
-    "Python.format.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.python daily_mailer.executor": "Run",
-    "Python.scratch.executor": "Run",
-    "Python.wotd.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/gabem/PythonProject/PythonProject/Photos",
-    "settings.editor.selected.configurable": "configurable.group.tools"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.Save_words.executor&quot;: &quot;Run&quot;,
+    &quot;Python.daily_mailer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.format.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.python daily_mailer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.wotd.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabem/PythonProject/PythonProject/Photos&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\gabem\PythonProject\PythonProject\Photos" />
@@ -86,7 +74,7 @@
       <recent name="C:\Users\gabem\PythonProject\PythonProject\Photos" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.format">
+  <component name="RunManager" selected="Python.wotd">
     <configuration name="Save_words" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
@@ -199,9 +187,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.wotd" />
         <item itemvalue="Python.format" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.wotd" />
         <item itemvalue="Python.scratch" />
         <item itemvalue="Python.Save_words" />
       </list>
@@ -221,14 +209,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00199" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775099997284</created>
-      <option name="number" value="00199" />
-      <option name="presentableId" value="LOCAL-00199" />
-      <option name="project" value="LOCAL" />
-      <updated>1775099997284</updated>
     </task>
     <task id="LOCAL-00200" summary="Initial">
       <option name="closed" value="true" />
@@ -614,7 +594,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775338653835</updated>
     </task>
-    <option name="localTasksCounter" value="248" />
+    <task id="LOCAL-00248" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775339225329</created>
+      <option name="number" value="00248" />
+      <option name="presentableId" value="LOCAL-00248" />
+      <option name="project" value="LOCAL" />
+      <updated>1775339225329</updated>
+    </task>
+    <option name="localTasksCounter" value="249" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

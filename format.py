@@ -6,7 +6,7 @@ folder_path = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
 
 # Loop through all files in the folder
 for filename in os.listdir(folder_path):
-    if filename.endswith((".png", ".jpeg", ".bmp", ".gif", ".tiff", ".atif", ".gif", ".webp")):
+    if filename.endswith((".png", ".jpeg", ".bmp", ".gif", ".tiff", ".avif", ".gif", ".webp")):
         # Define the full file paths
         img_path = os.path.join(folder_path, filename)
 
