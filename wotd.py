@@ -19,9 +19,10 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
-ARCHIVE = 'other_files/Former Words'
+WOTD_ARCHIVE = r'Former Words'
+ARCHIVE_PATH = r"other_files/Former Words"
 PHOTO_FOLDER = r"Photos"
-MISCELLANEOUS_FOLDER = r"other_files"
+OTHER_FILES = r"other_files"
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -60,9 +61,12 @@ def extract_synonyms(data, nyms):
             synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
 
+def add_txt_to_file_name(text):
+    file_name = f'{text}.txt'
+    return file_name
 
-def create_file(chosen_word, folder):
-    file_name = f'{chosen_word}.txt'
+def create_file(folder, chosen_word):
+    file_name = add_txt_to_file_name(chosen_word)
     try:
         folder_path = os.path.join(folder, file_name)
         if os.path.exists(folder_path):
@@ -72,8 +76,8 @@ def create_file(chosen_word, folder):
     except ValueError:
         print("Error", "Something went wrong.")
 
-def create_thes_file(chosen_word, folder):
-    file_name = f'{chosen_word}.txt'
+def create_thes_file(folder, chosen_word):
+    file_name = add_txt_to_file_name(chosen_word)
     try:
         folder_path = os.path.join(folder, file_name)
         if os.path.exists(folder_path):
@@ -87,12 +91,7 @@ def save_new_data(file_name, data):
     with open(file_name, "w") as f:
         f.write(json.dumps(data))
 
-def create_folder_path(file_name, folder):
-    file_name = f'{file_name}.txt'
-    folder_path = os.path.join(folder, file_name)
-    return folder_path
-
-def read_data_from_file(path):
+def read_data(path):
     try:
         if os.path.exists(path):
             with open(path, "r") as f:
@@ -100,11 +99,18 @@ def read_data_from_file(path):
                 return data
 
     except ValueError:
-       print("Error", "Something went wrong.")
+        print("Error", "Something went wrong.")
+
+def create_folder_path(folder_name, file_name):
+    file_name = f'{file_name}.txt'
+    folder_path = os.path.join(folder_name, file_name)
+    return folder_path
+
+
 
 def find_data_with_path(folder_name, file_name):
     new_path = create_folder_path(folder_name, file_name)
-    data = read_data_from_file(new_path)
+    data = read_data(new_path)
     return data
 
 def list_photo_names(folder_path):
@@ -115,12 +121,12 @@ def add_new_word(chosen_word):
     previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
     if chosen_word is not previous_WOTD:
         previous_WOTD.append(WORD)
-        save_new_data(ARCHIVE, previous_WOTD)
+        save_new_data(ARCHIVE_PATH, previous_WOTD)
     return previous_WOTD
 
 def create_archive(chosen_word):
-    create_file(chosen_word, TXT_FOLDER)
-    create_thes_file(chosen_word, THESAURUS_FOLDER)
+    create_file(TXT_FOLDER, chosen_word)
+    create_thes_file(THESAURUS_FOLDER, chosen_word)
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
@@ -139,8 +145,8 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = find_data_with_path(word_selected, TXT_FOLDER)
-    thes_data = find_data_with_path(word_selected, THESAURUS_FOLDER)
+    data = find_data_with_path(TXT_FOLDER, word_selected)
+    thes_data = find_data_with_path(TXT_FOLDER, word_selected)
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -176,9 +182,7 @@ def first_definition():
 def main():
     add_new_word(WORD)
     create_archive(WORD)
-
     first_definition()
 main()
-previous_WOTD = find_data_with_path(ARCHIVE,MISCELLANEOUS_FOLDER)
+previous_WOTD = read_data(ARCHIVE_PATH)
 print(previous_WOTD)
-
