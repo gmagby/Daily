@@ -12,7 +12,7 @@ def create_new_variants(chosen_word):
 
 favored = 0
 
-def guide_func(chosen_word):
+def main(chosen_word):
     new_word_variants_list = create_new_variants(chosen_word)
     top_of_page(chosen_word, new_word_variants_list)
     first_definition(chosen_word, new_word_variants_list)
@@ -124,4 +124,4 @@ def sidebar(chosen_word, variant):
         for t in previous_WOTD:
             create_merriam_button(t, t)
 
-guide_func(WORD)
+main(WORD)

@@ -19,7 +19,7 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
-WOTD_ARCHIVE = r'Former Words'
+WOTD_ARCHIVE = r'Former Words.txt'
 ARCHIVE_PATH = r"other_files/Former Words"
 PHOTO_FOLDER = r"Photos"
 OTHER_FILES = r"other_files"
@@ -41,7 +41,6 @@ def get_thes_data(word_selected):
 def check_for_no_data(text):
     if text != 'No info available':
         return True
-
     else:
         return False
 
@@ -60,10 +59,6 @@ def extract_synonyms(data, nyms):
         except (KeyError, TypeError):
             synonyms.append(NONE_RESULT)  # Append an empty list if there's an error
     return synonyms
-
-def add_txt_to_file_name(text):
-    file_name = f'{text}.txt'
-    return file_name
 
 def create_file(folder, chosen_word):
     file_name = add_txt_to_file_name(chosen_word)
@@ -102,31 +97,24 @@ def read_data(path):
         print("Error", "Something went wrong.")
 
 def create_folder_path(folder_name, file_name):
-    file_name = f'{file_name}.txt'
+    file_name = add_txt_to_file_name(file_name)
     folder_path = os.path.join(folder_name, file_name)
     return folder_path
-
-
 
 def find_data_with_path(folder_name, file_name):
     new_path = create_folder_path(folder_name, file_name)
     data = read_data(new_path)
     return data
 
+def add_txt_to_file_name(text):
+    file_name = f'{text}.txt'
+    file_name = cleaner(file_name, 5)
+    file_name = cleaner(file_name, 5)
+    return file_name
+
 def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
-
-def add_new_word(chosen_word):
-    previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
-    if chosen_word is not previous_WOTD:
-        previous_WOTD.append(WORD)
-        save_new_data(ARCHIVE_PATH, previous_WOTD)
-    return previous_WOTD
-
-def create_archive(chosen_word):
-    create_file(TXT_FOLDER, chosen_word)
-    create_thes_file(THESAURUS_FOLDER, chosen_word)
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
@@ -158,6 +146,17 @@ def create_variants(word_selected):
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
 
+def add_new_word(chosen_word):
+    previous_WOTD = read_data(ARCHIVE_PATH)
+    if chosen_word is not previous_WOTD:
+        previous_WOTD.append(WORD)
+        save_new_data(ARCHIVE_PATH, previous_WOTD)
+    return previous_WOTD
+
+def create_archive(chosen_word):
+    create_file(TXT_FOLDER, chosen_word)
+    create_thes_file(THESAURUS_FOLDER, chosen_word)
+
 # Text to List Converter
 def format_text(text):
     return text.split('^')
@@ -177,12 +176,11 @@ def first_definition():
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
     print('')
 
-
-
 def main():
     add_new_word(WORD)
     create_archive(WORD)
     first_definition()
+
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)
 print(previous_WOTD)

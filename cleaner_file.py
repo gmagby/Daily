@@ -2,7 +2,7 @@ import re
 
 
 def cleaner(clean_text, sharp=None):
-    print(clean_text)
+    print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
         clean_text = re.sub(r"dx_ety}", '', clean_text)
@@ -30,8 +30,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r"', '", ', ^', clean_text)
         return clean_text
     def date_cleaner(clean_text):
-        # clean_text = re.sub(r"ds1", '', clean_text)
-        # clean_text = re.sub(r",", ' or', clean_text)
+        clean_text = re.sub(r'dst1a1', '', clean_text)
         clean_text = re.sub(r'dst2', '', clean_text)
         clean_text = re.sub(r"ds1a", '', clean_text)
         clean_text = re.sub(r"dst", '', clean_text)
@@ -50,6 +49,9 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.png', '', clean_text)
         clean_text = re.sub(r'.gif', '', clean_text)
         return clean_text
+    def file_cleaner(clean_text):
+        clean_text = re.sub(r".txt.txt", ".txt", clean_text)
+        return clean_text
     def base_cleaner(clean_text):
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
         clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
@@ -65,9 +67,11 @@ def cleaner(clean_text, sharp=None):
         clean_text = base_cleaner(etymology_cleaner(clean_text))
     if sharp == 4:
         base_cleaner(clean_text)
+    if sharp == 5:
+        file_cleaner(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
-    print(clean_text)
+    print(f'Clean:        {clean_text}')
     print(" ")
     return clean_text
 
