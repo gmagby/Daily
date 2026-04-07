@@ -20,7 +20,6 @@ def guide_func(chosen_word):
     sidebar(chosen_word, new_word_variants_list)
     st.image(display_photo(chosen_word))
 
-
 def verify_more_definitions(chosen_word, variant):
     num = len(variant)
     if num > 1:
@@ -36,7 +35,6 @@ def top_of_page(chosen_word, variant):
     st.header("Word of the Day", divider="rainbow")
     st.title(chosen_word)
     st.markdown(f'**{variant[favored].type_of_speech}**')
-
 
 # Text to List Converter
 def format_text(text):
@@ -88,8 +86,6 @@ def display_instructions():
         'Safari Instructions: [Here](https://docs.google.com/presentation/d/1ICISEQxe1UuQ7Z3xBA9gU8fPLrTMFCbIZSy9M_au0HY/edit?usp=sharing)')
     st.sidebar.markdown(
         'Chrome instructions: [Here](https://docs.google.com/presentation/d/1B5HWIi_X_8wNhbKWEcTfKhnWs4DfLsemZEEiym612Y8/edit?usp=sharing)')
-
-
 
 def sidebar(chosen_word, variant):
     st.sidebar.title(chosen_word)

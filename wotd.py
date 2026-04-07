@@ -3,6 +3,7 @@ import re
 import requests
 import os
 from cleaner_file import cleaner
+from cleaner_file import list_of_prev_wotd_cleaner
 
 WORD = 'screed'
 chosen_word = 'aver'
@@ -102,27 +103,6 @@ def list_photo_names(folder_path):
     return [file for file in os.listdir(folder_path) if
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
 
-def list_of_prev_wotd_cleaner(clean_text):
-    print(clean_text)
-    clean_text = str(clean_text)
-    clean_text = re.sub(r'.jpg', '', clean_text)
-    clean_text = re.sub(r'.jpeg', '', clean_text)
-    clean_text = re.sub(r'.png', '', clean_text)
-    clean_text = re.sub(r'.gif', '', clean_text)
-    clean_text = re.sub(r'.webp', '', clean_text)
-    clean_text = re.sub(r'.avif', '', clean_text)
-    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"]", '', clean_text)
-    clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r"2", '', clean_text)
-    clean_text = clean_text.lower()
-    clean_list = clean_text.split(", ")
-    clean_list.sort(key=str.lower)
-    print(clean_list)
-    print('')
-    print(len(clean_list))
-    return clean_list
-
 def added_new_word(chosen_word):
     if chosen_word is not previous_WOTD:
         previous_WOTD.append(WORD)
@@ -132,10 +112,6 @@ def create_archive(prev_list):
     for t in prev_list:
         create_file(t, TXT_FOLDER)
         create_thes_file(t, THESAURUS_FOLDER)
-
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
-added_new_word(WORD)
-create_archive(previous_WOTD)
 
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
@@ -186,6 +162,9 @@ def first_definition():
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
     print('')
 
+previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
+added_new_word(WORD)
+create_archive(previous_WOTD)
 first_definition()
 
 
