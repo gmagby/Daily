@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Future WOTD.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FUTURE WOTD.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wotd.py" beforeDir="false" afterPath="$PROJECT_DIR$/wotd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FUTURE WOTD.txt" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/FUTURE WOTD.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Former Words" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/Former Words" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Former Words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/Former Words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Save_words.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/code_for_later.py" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/code_for_later.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daily_mailer.py" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/daily_mailer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/format.py" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/format.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +82,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.wotd">
-    <configuration name="format (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="format" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,11 +91,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Photos" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/format.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\gabem\PythonProject\PythonProject\other_files\format.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -109,11 +113,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Photos" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\gabem\PythonProject\PythonProject\format.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\gabem\PythonProject\PythonProject\other_files\format.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,14 +216,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00200" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775100165436</created>
-      <option name="number" value="00200" />
-      <option name="presentableId" value="LOCAL-00200" />
-      <option name="project" value="LOCAL" />
-      <updated>1775100165436</updated>
     </task>
     <task id="LOCAL-00201" summary="Initial">
       <option name="closed" value="true" />
@@ -605,7 +601,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775339225329</updated>
     </task>
-    <option name="localTasksCounter" value="249" />
+    <task id="LOCAL-00249" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1775525504650</created>
+      <option name="number" value="00249" />
+      <option name="presentableId" value="LOCAL-00249" />
+      <option name="project" value="LOCAL" />
+      <updated>1775525504650</updated>
+    </task>
+    <option name="localTasksCounter" value="250" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
