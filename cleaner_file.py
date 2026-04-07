@@ -1,6 +1,5 @@
 import re
 
-
 def cleaner(clean_text, sharp=None):
     print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
