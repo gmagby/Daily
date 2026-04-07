@@ -18,7 +18,7 @@ ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
-ARCHIVE = 'Former Words'
+ARCHIVE = 'other_files/Former Words'
 PHOTO_FOLDER = r"Photos"
 
 def get_response_dictionary(ref, word, key):
