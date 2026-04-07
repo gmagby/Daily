@@ -3,7 +3,7 @@ import re
 import requests
 import os
 
-WORD = 'perspicacious'
+WORD = 'screed'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
@@ -16,9 +16,10 @@ ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
 NONE_RESULT = 'No info available'
-PHOTO_FOLDER = r"Photos"
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
+ARCHIVE = 'Former Words'
+PHOTO_FOLDER = r"Photos"
 
 def get_response_dictionary(ref, word, key):
     url = f"https://www.dictionaryapi.com/api/v3/references/{ref}/json/{word}?key={key}"
@@ -111,7 +112,6 @@ def check_for_no_data(text):
     else:
         return False
 
-
 def list_manager(data, syntax, sharp=None):
     return [
         cleaner(item.get(syntax, NONE_RESULT), sharp) if item.get(syntax) else NONE_RESULT
@@ -167,6 +167,45 @@ def read_data(chosen_word, folder):
     except ValueError:
        print("Error", "Something went wrong.")
 
+def list_photo_names(folder_path):
+    return [file for file in os.listdir(folder_path) if
+            file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
+
+def list_of_prev_wotd_cleaner(clean_text):
+    print(clean_text)
+    clean_text = str(clean_text)
+    clean_text = re.sub(r'.jpg', '', clean_text)
+    clean_text = re.sub(r'.jpeg', '', clean_text)
+    clean_text = re.sub(r'.png', '', clean_text)
+    clean_text = re.sub(r'.gif', '', clean_text)
+    clean_text = re.sub(r'.webp', '', clean_text)
+    clean_text = re.sub(r'.avif', '', clean_text)
+    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
+    clean_text = re.sub(r"]", '', clean_text)
+    clean_text = re.sub(r"'", '', clean_text)
+    clean_text = re.sub(r"2", '', clean_text)
+    clean_text = clean_text.lower()
+    clean_list = clean_text.split(", ")
+    clean_list.sort(key=str.lower)
+    print(clean_list)
+    print('')
+    print(len(clean_list))
+    return clean_list
+
+def added_new_word(chosen_word):
+    if chosen_word is not previous_WOTD:
+        previous_WOTD.append(WORD)
+        save_to_file(ARCHIVE, previous_WOTD)
+
+def create_archive(prev_list):
+    for t in prev_list:
+        create_file(t, TXT_FOLDER)
+        create_thes_file(t, THESAURUS_FOLDER)
+
+previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
+added_new_word(WORD)
+create_archive(previous_WOTD)
+
 class WordVariant:
     def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
         self.definition = definition
@@ -196,37 +235,6 @@ def create_variants(word_selected):
         NONE_RESULT]
     variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
     return variants
-
-def list_photo_names(folder_path):
-    return [file for file in os.listdir(folder_path) if
-            file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
-
-def list_of_prev_wotd_cleaner(clean_text):
-    print(clean_text)
-    clean_text = str(clean_text)
-    clean_text = re.sub(r'.jpg', '', clean_text)
-    clean_text = re.sub(r'.jpeg', '', clean_text)
-    clean_text = re.sub(r'.png', '', clean_text)
-    clean_text = re.sub(r'.gif', '', clean_text)
-    clean_text = re.sub(r'.webp', '', clean_text)
-    clean_text = re.sub(r'.avif', '', clean_text)
-    clean_text = re.sub(r"[\#[/@<>{}=~|?]", '', clean_text)
-    clean_text = re.sub(r"]", '', clean_text)
-    clean_text = re.sub(r"'", '', clean_text)
-    clean_text = re.sub(r"2", '', clean_text)
-    clean_text = clean_text.lower()
-    clean_list = clean_text.split(", ")
-    clean_list.sort(key=str.lower)
-    print(clean_list)
-    print('')
-    print(len(clean_list))
-    return clean_list
-
-photo_folder = r"Photos"
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(photo_folder))
-for t in previous_WOTD:
-    create_file(t, TXT_FOLDER)
-    create_thes_file(t, THESAURUS_FOLDER)
 
 # Text to List Converter
 def format_text(text):

@@ -1,4 +1,4 @@
-Future WOTD
+Future WOTD = [
 "agnostics",
 "amnesties",
 "acnes",
