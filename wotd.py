@@ -4,7 +4,7 @@ import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'screed'
+WORD = 'winnow'
 chosen_word = 'aver'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
