@@ -49,7 +49,7 @@ def cleaner(clean_text, sharp=None):
         clean_text = re.sub(r'.gif', '', clean_text)
         return clean_text
     def file_cleaner(clean_text):
-        clean_text = re.sub(r".txt.txt", ".txt", clean_text)
+        clean_text = re.sub(r'.txt.txt', ".txt", clean_text)
         return clean_text
     def base_cleaner(clean_text):
         clean_text = re.sub(r"\s+", " ", clean_text).strip()  # Remove extra spaces
@@ -75,7 +75,6 @@ def cleaner(clean_text, sharp=None):
     return clean_text
 
 def list_of_prev_wotd_cleaner(clean_text):
-    print(clean_text)
     clean_text = str(clean_text)
     clean_text = re.sub(r'.jpg', '', clean_text)
     clean_text = re.sub(r'.jpeg', '', clean_text)
@@ -90,7 +89,4 @@ def list_of_prev_wotd_cleaner(clean_text):
     clean_text = clean_text.lower()
     clean_list = clean_text.split(", ")
     clean_list.sort(key=str.lower)
-    print(clean_list)
-    print('')
-    print(len(clean_list))
     return clean_list
