@@ -113,7 +113,7 @@ def sidebar(chosen_word, variant):
 
     def create_merriam_button(text, chosen_word):
         button = st.sidebar.link_button(f'{text}', create_merriam_url(chosen_word))
-
+        st.sidebar.image(display_photo(t))
         return button
 
     create_merriam_button('Merriam-Webster', WORD)
@@ -122,10 +122,8 @@ def sidebar(chosen_word, variant):
         display_instructions()
 
     if st.sidebar.button('Previous words of the day.'):
+        previous_WOTD.sort()
         for t in previous_WOTD:
-            if st.sidebar.link_button(f'{t}', create_merriam_url(t)):
-                st.sidebar.image(display_photo(t))
-
-
+            create_merriam_button(t, t)
 
 main(WORD)
