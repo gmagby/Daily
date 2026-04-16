@@ -123,8 +123,8 @@ def sidebar(chosen_word, variant):
 
     if st.sidebar.button('Previous words of the day.'):
         for t in previous_WOTD:
-            create_merriam_button(t, t)
-            st.sidebar.image(display_photo(t))
+            if st.sidebar.link_button(f'{t}', create_merriam_url(chosen_word)):
+                st.sidebar.image(display_photo(t))
 
 
 
