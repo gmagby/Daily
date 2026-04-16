@@ -113,7 +113,8 @@ def sidebar(chosen_word, variant):
 
     def create_merriam_button(text, chosen_word):
         button = st.sidebar.link_button(f'{text}', create_merriam_url(chosen_word))
-        st.sidebar.image(display_photo(t))
+        if button:
+            st.sidebar.image(display_photo(t))
         return button
 
     create_merriam_button('Merriam-Webster', WORD)
