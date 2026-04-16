@@ -4,7 +4,7 @@ import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'skulduggery'
+WORD = 'anabatic'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -57,9 +57,15 @@ def extract_synonyms(data, nyms):
             synonyms.append(NONE_RESULT)
     return synonyms
 
+# def create_file(folder, chosen_word, is_thesaurus=False):
+#     file_name = add_txt_to_file_name(chosen_word)
+#     folder_path = os.path.join(folder, file_name)
+#     if not os.path.exists(folder_path):
+#         data = get_thes_data(chosen_word) if is_thesaurus else get_data(chosen_word)
+#         save_new_data(folder_path, data)
+
 def create_file(folder, chosen_word, is_thesaurus=False):
-    file_name = add_txt_to_file_name(chosen_word)
-    folder_path = os.path.join(folder, file_name)
+    folder_path = create_folder_path(folder, chosen_word)
     if not os.path.exists(folder_path):
         data = get_thes_data(chosen_word) if is_thesaurus else get_data(chosen_word)
         save_new_data(folder_path, data)
@@ -108,8 +114,8 @@ def create_word_variants(definitions, dates, etymologies, types_of_speech, synon
     ]
 
 def create_variants(word_selected):
-    data = find_data_with_path(TXT_FOLDER, word_selected)
-    thes_data = find_data_with_path(THESAURUS_FOLDER, word_selected)
+    data = read_data(create_folder_path(TXT_FOLDER, word_selected))
+    thes_data = read_data(create_folder_path(THESAURUS_FOLDER, word_selected))
     definition_list = list_manager(data, DEFINITION_KEY, sharp=1)
     date_list = list_manager(data, DATE_KEY, sharp=2)
     etymology_list = list_manager(data, ETYMOLOGY_KEY, sharp=3)
@@ -123,7 +129,7 @@ def create_variants(word_selected):
 
 
 def add_new_word(chosen_word):
-    previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names)
+    previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names(PHOTO_FOLDER))
     if chosen_word in previous_WOTD:
         print("Word already added")
         pass
@@ -160,5 +166,4 @@ def main():
     first_definition()
 
 main()
-previous_WOTD = list_of_prev_wotd_cleaner(list_photo_names)
-print(previous_WOTD)
+previous_WOTD = read_data(ARCHIVE_PATH)
