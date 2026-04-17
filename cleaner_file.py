@@ -1,7 +1,7 @@
 import re
 
 def cleaner(clean_text, sharp=None):
-    print(f'Old:          {clean_text}')
+    # print(f'Old:          {clean_text}')
     clean_text = str(clean_text)
     def etymology_cleaner(clean_text):
         clean_text = re.sub(r"dx_ety}", '', clean_text)
@@ -70,8 +70,8 @@ def cleaner(clean_text, sharp=None):
         file_cleaner(clean_text)
     clean_text = re.sub(r"\s+", " ", clean_text).strip()
     clean_text = str(clean_text)
-    print(f'Clean:        {clean_text}')
-    print(" ")
+    # print(f'Clean:        {clean_text}')
+    # print(" ")
     return clean_text
 
 def list_of_prev_wotd_cleaner(clean_text):
