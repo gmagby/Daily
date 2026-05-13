@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
-      <change afterPath="$PROJECT_DIR$/Photos/adjutant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/agglomeration.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/ambulate.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/amorous.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/anabatic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/anamnesis.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/arrant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/bay.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/bifurcate.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/enmity.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/esoteric.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/exigent.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/extraneous.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/fettered.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/histrionic.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/hullabaloo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/intersperse.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/intrepid.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/lamentation.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/liturgy.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/lumpen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/lurid.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/oenophile.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/pernicious.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/phyrric.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/planar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/postulate.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/pusillanimous.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Photos/quadruped.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testnewhtml.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -263,14 +231,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00232" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775337008762</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1775337008762</updated>
     </task>
     <task id="LOCAL-00233" summary="Initial">
       <option name="closed" value="true" />
@@ -656,7 +616,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778546040822</updated>
     </task>
-    <option name="localTasksCounter" value="281" />
+    <task id="LOCAL-00281" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1778546245166</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1778546245166</updated>
+    </task>
+    <option name="localTasksCounter" value="282" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -1,10 +1,12 @@
 import json
+import re
+
 import requests
 import os
 from cleaner_file import cleaner
 from cleaner_file import list_of_prev_wotd_cleaner
 
-WORD = 'lumpen'
+WORD = 'garrulous'
 REF_DICTIONARY = "collegiate"
 REF_THESAURUS = "thesaurus"
 DICTIONARY_KEY = 'f45f1248-4774-4d20-8d31-ecb2d70452e0'
@@ -15,6 +17,8 @@ DATE_KEY = 'date'
 ETYMOLOGY_KEY = 'et'
 SYNONYMS = 'syns'
 ANTONYMS = 'ants'
+STATS = 'hwi'
+PRONUNCIATION = 'hw'
 NONE_RESULT = 'No info available'
 TXT_FOLDER = r'txt_files'
 THESAURUS_FOLDER = r'Thesaurus'
@@ -57,8 +61,16 @@ def extract_synonyms(data, nyms):
             synonyms.append(NONE_RESULT)
     return synonyms
 
+def extract_pronunciation(data, syntax, info):
+    for entry in data:
+        try:
+            pronounce = entry[syntax].get(info)
+            return pronounce
+        except (KeyError, TypeError):
+            pass
+
 # def create_file(folder, chosen_word, is_thesaurus=False):
-#     file_name = add_txt_to_file_name(chosen_word)
+#     file_name = add_dottxt_to_file_name(chosen_word)
 #     folder_path = os.path.join(folder, file_name)
 #     if not os.path.exists(folder_path):
 #         data = get_thes_data(chosen_word) if is_thesaurus else get_data(chosen_word)
@@ -85,12 +97,12 @@ def read_data(path):
         print("Error", "Something went wrong.")
 
 def create_folder_path(folder_name, file_name):
-    return os.path.join(folder_name, add_txt_to_file_name(file_name))
+    return os.path.join(folder_name, add_dottxt_to_file_name(file_name))
 
 def find_data_with_path(folder_name, file_name):
     return read_data(create_folder_path(folder_name, file_name))
 
-def add_txt_to_file_name(text):
+def add_dottxt_to_file_name(text):
     return f'{cleaner(text, 5)}.txt'
 
 def list_photo_names(folder_path):
@@ -98,17 +110,18 @@ def list_photo_names(folder_path):
             file.endswith(('.jpg', '.webp', '.avif', '.jpeg', '.png', '.gif'))]
 
 class WordVariant:
-    def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None):
+    def __init__(self, definition=None, type_of_speech=None, date=None, etymology=None, synonyms=None, antonyms=None, pronunciation=None):
         self.definition = definition
         self.type_of_speech = type_of_speech
         self.date = date
         self.etymology = etymology
         self.synonyms = synonyms
         self.antonyms = antonyms
+        self.pronunciation = pronunciation
 
-def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms):
+def create_word_variants(definitions, dates, etymologies, types_of_speech, synonyms, antonyms, pronunciation):
     return [
-        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms)
+        WordVariant(definition, type_of_speech, date, etymology, synonyms, antonyms, pronunciation)
         for definition, type_of_speech, date, etymology, synonyms, antonyms in
         zip(definitions, types_of_speech, dates, etymologies, synonyms, antonyms)
     ]
@@ -124,7 +137,8 @@ def create_variants(word_selected):
         NONE_RESULT]
     antonyms_list = extract_synonyms(thes_data, ANTONYMS) if thes_data else [
         NONE_RESULT]
-    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list)
+    pronunciation_list = extract_pronunciation(data, STATS, PRONUNCIATION)
+    variants = create_word_variants(definition_list, date_list, etymology_list, type_of_speech_list, synonyms_list, antonyms_list, pronunciation_list)
     return variants
 
 
@@ -151,6 +165,7 @@ def first_definition():
     print("Formated Text:")
     for t in range(len(formated_definition)):
         print(formated_definition[t])
+    print(f'{list_of_word_variants[0].pronunciation}')
     print(f'Date first used: {list_of_word_variants[0].date}')
     print(" ")
     print(f'Amount of items in Format: ' + str(len(formated_definition)))
@@ -158,7 +173,11 @@ def first_definition():
     print(" ")
     print(f'Synonyms List: {list_of_word_variants[0].synonyms}')
     print(f'Antonyms List: {list_of_word_variants[0].antonyms}')
+
     print('')
+    for t in range(1, len(list_of_word_variants)):  # Start from 1 to avoid accessing index 0
+        print(list_of_word_variants[t].definition)
+
 
 def main():
     add_new_word(WORD)
@@ -167,3 +186,4 @@ def main():
 
 main()
 previous_WOTD = read_data(ARCHIVE_PATH)
+link = get_data(WORD)
