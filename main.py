@@ -4,6 +4,7 @@ from wotd import WORD
 from PIL import Image
 from wotd import create_variants
 import os
+from format_p
 # from st_copy_to_clipboard import st_copy_to_clipboard
 
 def create_new_variants(chosen_word):
@@ -56,8 +57,7 @@ def check_for_no_data(text):
     else:
         return False
 
-def format_photo():
-    pass
+
 
 def pull_specific_photo(folder_path, photo_name):
     # Default case (equivalent to else)
