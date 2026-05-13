@@ -4,7 +4,7 @@ from wotd import WORD
 from PIL import Image
 from wotd import create_variants
 import os
-from format_p
+import format_photos
 # from st_copy_to_clipboard import st_copy_to_clipboard
 
 def create_new_variants(chosen_word):

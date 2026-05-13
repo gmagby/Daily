@@ -4,7 +4,7 @@ from PIL import Image
 # Path to your folder containing images
 # folder_path = r"C:\Users\gabem\OneDrive\Desktop\WOTD images"
 def format_photo():
-    folder_path = r"C:\Users\gabem\PythonProject\PythonProject\Photos"
+    folder_path = r"Photos"
     # Loop through all files in the folder
     for filename in os.listdir(folder_path):
         if filename.endswith((".png", ".jpeg", ".bmp", ".gif", ".tiff", ".avif", ".gif", ".webp")):

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dd973e71-29ec-4c3a-b87e-b5314ff12ada" name="Changes" comment="Initial">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/other_files/format.py" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/format_photos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/other_files/Former Words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/other_files/Former Words.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/other_files/format_photos.py" beforeDir="false" afterPath="$PROJECT_DIR$/format_photos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,13 +72,13 @@
       <recent name="C:\Users\gabem\PythonProject\PythonProject" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\gabem\PythonProject\PythonProject\other_files" />
       <recent name="C:\Users\gabem\PythonProject\PythonProject" />
+      <recent name="C:\Users\gabem\PythonProject\PythonProject\other_files" />
       <recent name="C:\Users\gabem\PythonProject\PythonProject\txt_files" />
       <recent name="C:\Users\gabem\PythonProject\PythonProject\Photos" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="format photos" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
@@ -135,7 +136,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\gabem\PythonProject\PythonProject\other_files\format_photos.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\gabem\PythonProject\PythonProject\format_photos.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -212,8 +213,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.format photos" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.format photos" />
         <item itemvalue="Python.wotd" />
         <item itemvalue="Python.format_photos" />
         <item itemvalue="Python.scratch" />
@@ -234,14 +235,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1769227112200</updated>
-    </task>
-    <task id="LOCAL-00235" summary="Initial">
-      <option name="closed" value="true" />
-      <created>1775337251514</created>
-      <option name="number" value="00235" />
-      <option name="presentableId" value="LOCAL-00235" />
-      <option name="project" value="LOCAL" />
-      <updated>1775337251514</updated>
     </task>
     <task id="LOCAL-00236" summary="Initial">
       <option name="closed" value="true" />
@@ -627,7 +620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778654778883</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="Initial">
+      <option name="closed" value="true" />
+      <created>1778654973785</created>
+      <option name="number" value="00284" />
+      <option name="presentableId" value="LOCAL-00284" />
+      <option name="project" value="LOCAL" />
+      <updated>1778654973785</updated>
+    </task>
+    <option name="localTasksCounter" value="285" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
