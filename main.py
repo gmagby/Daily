@@ -56,6 +56,9 @@ def check_for_no_data(text):
     else:
         return False
 
+def format_photo():
+    pass
+
 def pull_specific_photo(folder_path, photo_name):
     # Default case (equivalent to else)
     photo_path = os.path.join(folder_path, photo_name)
